@@ -1,0 +1,423 @@
+Overriding and Overloading with examples
+example to reverse a string
+Class used to selenium to select an option
+difference b/w find element and findelements
+* * *
+* *
+*
+write a program to print this pattern
+What is abstraction?
+two tables were given and I was asked to write the query to fetch the second highest data?
+how to create a table?
+what is restful web services
+Explain ur framework and challenges u faced.
+
+Mention What Is Selenium 3.0?
+Selenium 3.0 is the latest version of Selenium. It has released 2 beta versions of selenium 3.0 with few of the below changes:
+Here are few new features added to Selenium 3.0
+Beta 1 updates	Beta 2 updates (Only for Java)
+B1:Minimum java version is now 8+
+B2:System property webdriver.firefox.marionette now forces the server in marionette or legacy firefox driver mode, ignoring any related Desired Capability
+B1:It will support for Firefox Via Mozilla’s geckodriver
+B2:Grid fixes NPE’s on registration when -browser not specified
+B1:Support for Edge is provided by MS
+B1:It now supports Safari on MacOS via Apple’s own Safari driver
+B2:Update GeckoDriver –port argument in all bi
+
+Which Attribute You Should Consider Throughout The Script In Frame For “If No Frame Id As Well As No Frame Name”?
+You can use…..driver.findElements(By.xpath(“//iframe”))….
+This will return list of frames.
+You will ned to  switch to each and every frame and search for locator which we want.
+Then break the loop
+
+While Using Click Command Can You Use Screen Coordinate?
+To click on specific part of element, you would need to use clickAT command.  ClickAt command accepts element locator and x, y co-ordinates as arguments- clickAt (locator, cordString)
+
+What Is The Difference Between Type Keys And Type Commands ?
+TypeKeys() will trigger JavaScript event in most of the cases whereas .type() won’t. Type key populates the value attribute using JavaScript whereas .typekeys() emulates like actual user typing
+
+1.How can you redirect browsing from a browser through some proxy?
+ANS:Selenium provides a PROXY class to redirect browsing from a proxy. Look at the example below:
+    String PROXY = “199.201.125.147:8080”;
+    org.openqa.selenium.Proxy proxy = new.org.openqa.selenium.Proxy();
+    proxy.setHTTPProxy(Proxy)
+    .setFtpProxy(Proxy)
+    .setSslProxy(Proxy)
+    DesiredCapabilities cap = new DesiredCapabilities();
+    cap.setCapability(CapabilityType.PROXY, proxy);
+    WebDriver driver = new FirefoxDriver(cap);
+
+2.Write a code to wait for a particular element to be visible on a page. Write a code to wait for an alert to appear.
+ANS:We can write a code such that we specify the XPath of the web element that needs to be visible on the page and then ask the WebDriver to wait for a specified time.     Look at the sample piece of code below:
+    WebDriverWait wait=new WebDriverWait(driver, 20);
+    Element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath( “<xpath”)));
+    Similarly, we can write another piece of code asking the WebDriver to wait until an error appears like this:
+    WebDriverWait wait=new WebDriverWait(driver, 20);
+    Element = wait.until(ExpectedConditions.alertIsPresent());
+
+3.How to scroll down to a particular element?
+ANS:To scroll down to a particular element on a web page, we can use the function scrollIntoView().
+        Example:
+	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+
+4.How do you upload a file using Selenium WebDriver?
+ANS:To upload a file we can simply use the command element.send_keys(file path). But there is a prerequisite before we upload the file. We have to use the html tag: 	‘input’ and attribute type should be ‘file’. Take a look at the below example where we are identifying the web element first and then uploading the file.
+	<input type="file" name="uploaded_file" size="50" class="pole_plik">
+	element = driver.find_element_by_id(”uploaded_file")
+	element.send_keys("C:\myfile.txt")
+
+5.Explain how can you find broken links in a page using Selenium WebDriver?
+
+6.What is parameterization in TestNG? How to pass parameters using testng.xml?
+ANS:Parameterization is the technique of defining values in testng.xml file and sending them as parameters to the test class. This technique is especially useful when 	we need to pass multiple login credentials of various test environments. Take a look at the code below, in which “myName” is annotated as a parameter.
+	public class ParameterizedTest1{
+ 	@Test
+ 	@Parameters("myName")
+	public void parameterTest(String myName) {
+ 	System.out.println("Parameterized value is : " + myName);
+ 	}
+	}
+
+To pass parameters using testng.xml file, we need to use ‘parameters’ tag. Look at the below code for example:
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+ 	<suite name=”CustomSuite">
+  	<test name=”CustomTest”> 
+   	<parameter name="myName" value=”John"/>
+    	<classes>
+     	<class name="ParameterizedTest1" />
+    	</classes> 
+  	</test>
+ 	</suite>
+
+7.Explain DataProviders in TestNG using an example. Can I call a single data provider method for multiple functions and classes?
+ANS:@DataProvider(name="getData")
+ 	public Object[][] getData(){
+ 	//Object [][] data = new Object [rowCount][colCount];
+ 	Object [][] data = new Object [2][2];
+ 
+ 	data [0][0] = "FirstUid";
+	data [0][1] = "FirstPWD";
+ 
+ 	data[1][0] = "SecondUid";
+	data[1][1] = "SecondPWD";
+ 
+ 	return data;
+ 
+ 	}
+
+8.How to skip a method or a code block in TestNG?
+ANS:If you want to skip a particular test method, then you can set the ‘enabled’ parameter in test annotation to false.
+	@Test(enabled = false)
+	By default, the value of ‘enabled’ parameter will be true. Hence it is not necessary to define the annotation as true while defining it.
+
+9.How does TestNG allow you to state dependencies? Explain it with an example.
+ANS:Dependency is a feature in TestNG that allows a test method to depend on a single or a group of test methods. Method dependency only works if the “depend-on-	method” is part of the same class or any of the inherited base classes (i.e. while extending a class). Syntax:
+	@Test(dependsOnMethods = { “initEnvironmentTest” })
+	@Test(groups={“Car”})
+	public void drive(){
+	system.out.println(“Driving the vehicle”);
+	}
+	@Test(dependsOnMethods={“drive”},groups={cars})
+	public void changeGear() {
+	system.out.println("Change Gears”);
+	} 
+	@Test(dependsOnMethods={“changeGear”},groups={“Car”})
+	public void accelerate(){
+	system.out.println(“Accelerating”);
+	}
+
+10.Explain what does @Test(invocationCount=?) and @Test(threadPoolSize=?) indicate.
+ANS:@Test(invocationCount=?) is a parameter that indicates the number of times this method should be invoked.
+	@Test(threadPoolSize=?) is used for executing suites in parallel. Each suite can be run in a separate thread.
+	To specify how many times @Test method should be invoked from different threads, you can use the attribute threadPoolSize along with invocationCount. Example:
+	@Test(threadPoolSize = 3, invocationCount = 10)
+	public void testServer() {
+	}
+
+11.What Is Your Velocity Of Automating Tests Per Sprint?
+ANS:There is no simple rule to compute the velocity of test case automation per sprint. The following factors influence how many tests we can automate.
+	Our product or feature knowledge
+	The complexity of the feature
+	The probability of unknowns
+	However, my average velocity comes around ~(30-50) test cases in a 2-week sprint, i.e., 3-5 cases per day.
+
+12.What Do You Know About An Exception Test In Selenium?
+ANS:An exception test is a special exception which occurs in a test class.
+	Suppose, we have a created a test case that can throw an exception.
+	In this case, the @Test annotation can help us specify the exception that could occur.
+	Check out from the below example.
+	@Test(actualException = ElementNotVisibleException.class)
+
+13.What Is The Command To Bind A Node To Selenium Grid?
+ANS:Please make sure to download the Selenium-server jar before running the below command.
+	java –jar <selenium-server-standalone-x.xx.x.jar> –role node –hub http://<node IP>:4444/grid/register
+
+14.What Are User Extensions And How Do You Create Them?
+ANS:User extensions are a set of functions written in JavaScript. They are present in a separate known as the extension file. Selenium IDE or Selenium RC access it to 	activate the extensions.
+	Selenium’s core has a JavaScript code base. So, we can also use it to create the extension.
+	The extension has a specific format as given below.
+	// sample
+	Selenium.prototype.doFunctionName = function(){
+	}
+
+15.How To Resolve SSL Certificate Issue (Secured Connection Error) In Firefox With WebDriver?
+ANS:There can be many reasons for the secured connection error. It could be because of the following:
+While a site is getting developed, it may not have the right SSL certificate.
+The site may be using a self-signed certificate.
+	The SSL may not have configured appropriately at the server end.
+	However, you still want to test the site’s standard functionality using Selenium. Then, the idea is to switch off the SSL setting and ignore the SSL error.
+	Check out the below code to disable the SSL in Selenium.
+	FirefoxProfile ssl = new FirefoxProfile();
+
+	ssl.setAcceptUntrustedCertificates(true);
+
+	ssl.setAssumeUntrustedCertificateIssuer(false);
+
+	WebDriver ins = new FirefoxDriver(ssl);
+
+17.How To Work With AJAX Controls In WebDriver?
+ANS:AJAX is an acronym for Asynchronous JavaScript and XML. It is independent of the opening and closing tags required for creating valid XML.
+	Sometimes, the WebDriver itself manages to work with the Ajax controls and actions. However, if it doesn’t succeed, then try out the below code.
+	//Waiting for Ajax Control
+	WebElement AjaxCtrl = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By. &lt;locatorType&gt;("&lt;locator Value&gt;")));
+	Some of the methods which are available are as follows:
+	1. titleIs() – The expected condition waits for a page with a specific title.
+	wait.until(ExpectedConditions.titleIs(“Deal of the Day”));
+	wait.until(ExpectedConditions.titleIs(“Deal of the Day”));
+	2. elementToBeClickable() – The expected condition waits for an element to be clickable i.e. it should be present/displayed/visible on the screen as well as 	enabled.
+	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("xpath")));
+	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("xpath")));
+	3. alertIsPresent() – The expected condition waits for an alert box to appear.
+	wait.until(ExpectedConditions.alertIsPresent()) !=null);
+	wait.until(ExpectedConditions.alertIsPresent()) !=null);
+	4. textToBePresentInElement() – The expected condition waits for an element having a certain string pattern.
+	wait.until(ExpectedConditions.textToBePresentInElement(By.id(“title’”), “text to be found”));
+	wait.until(ExpectedConditions.textToBePresentInElement(By.id(“title’”), 
+
+	selenium code to download a file
+	; wait for 8 seconds to appear download and save dialog. Used class property of download dialog.
+	WinWait("[CLASS:#MozillaDialogClass]","",8)
+	; Perform keyboard ALT key + s key to select Save File Radio button using keyboard shortcut.
+	Send("!s")
+	; Wait for 9 seconds
+	Sleep(9000)
+	; Press Keyboard ENTER button.
+	Send("{ENTER}")
+
+18.What type of tests have you automated?
+ANS:Our main focus is to automate test cases to do Regression testing, Smoke testing, and Sanity testing. Sometimes based on the project and the test time estimation, 	we do focus on End to End testing.
+
+19.How can we create a data-driven framework using TestNG?
+
+
+20.i.Handling nested frames using recursion
+ii.Handling new Tabs in chrome
+
+21.How do you read a JavaScript variable in Selenium WebDriver?
+Ans. It's easy to access any JavaScript variable from the Selenium Webdriver test scripts. Just you need to use the below Java code snippet.
+	// Initialize the JS object.
+	JavascriptExecutor JS = (JavascriptExecutor) webdriver;
+	// Get the current site title.
+	String sitetitle = (String)JS.executeScript("return document.title");
+	System.out.println("My Site Title: " + sitetitle);
+
+22.How many test cases you have automated per day?
+ANS:It depends on Test case scenario complexity and length. I did automate 2-5 test scenarios per day when the complexity is limited. Sometimes just 1 or fewer test 	scenarios in a day when the complexity is high.
+
+23.How to input text in the text box without calling the sendKeys()?
+ANS:// To initialize js object
+	JavascriptExecutor JS = (JavascriptExecutor)webdriver;
+	// To enter username	
+	JS.executeScript("document.getElementById(User').value='SoftwareTestingMaterial.com'");
+	// To enter password
+	JS.executeScript("document.getElementById('Pass').value='tester'");
+	// To initialize js object
+	JavascriptExecutor JS = (JavascriptExecutor)webdriver;
+	// To enter username
+	JS.executeScript("document.getElementById(User').value='SoftwareTestingMaterial.com'");
+	// To enter password
+	JS.executeScript("document.getElementById('Pass').value='tester'");
+
+24. How can we find the value of different attributes like name, class, value of an element?
+ANS:getAttribute("{attributeName}") //method is used find the value of different attributes of an elemen
+
+25.What is the difference between @Factory and @DataProvider annotation?
+ANS:@DataProvider is concerned to individual test methods and run the specific methods for many times. @Factory method creates test class instances and runs all the 	test methods in that class with different data. sets.
+
+26.explain the steps involved in automation testing.
+ANS:	1.decision to automate testing.
+	2.test tool aquisition.
+	3.automated testing introduction process.
+	4.test planning,design and developement.
+	5.execution and management of test
+	6.test program review and assesments.
+
+27.Explain how you can capture server side log Selenium Server?
+ANS:To capture server side log in Selenium Server, you can use command: java –jar .jar –log selenium.log
+
+28.How can we move to nth child element using XPath?
+ANS:There are two ways of navigating to the nth element using XPath-
+	Using square brackets with index position-
+	Example – div[2] will find the second div element.
+	Using position()-
+	Example – div[position()=3] will find the third div element
+
+29.What are DesiredCapabilities in selenium webdriver?
+ANS:Desired capabilities are a set of key-value pairs that are used for storing or configuring browser specific properties like its version, platform etc in the 	browser instances.
+
+30.What are some commonly encountered exceptions in selenium?
+ANS.Some of the commonly seen exception in selenium are-
+	NoSuchElementException – When no element could be located from the locator provided.
+	ElementNotVisibleException – When element is present in the dom but is not visible.
+	NoAlertPresentException – When we try to switch to an alert but the targetted alert is not present.
+	NoSuchFrameException – When we try to switch to a frame but the targetted frame is not present.
+	NoSuchWindowException – When we try to switch to a window but the targetted window is not present.
+	UnexpectedAlertPresentException – When an unexpected alert blocks normal interaction of the driver.
+	TimeoutException – When a command execution gets timeout.
+	InvalidElementStateException – When the state of an element is not appropriate for the desired action.
+	NoSuchAttributeException – When we are trying to fetch an attribute’s value but the attribute is not correct
+	WebDriverException – When there is some issue with driver instance preventing it from getting launched.
+
+31.what are the four parameter values need to be passed in selenium?
+ANS:	1.host.
+	2.url.
+	3.browser.
+	4.port number.
+
+32.How can you handle network latency using Selenium?
+ANS:You can use driver.manage().timeouts().pageLoadTimeout(); for network latency
+
+33.How to login into any site if it’s showing any authentication pop-up for username and password?
+ANS:You should pass the username and password with URL:
+	https://username:password@url
+	https://creds:test@www.test.com
+
+34.How to verify tooltip text using Selenium?
+ANS:The tooltip text in Selenium could be verified by fetching the value of 'title' attribute. An example:
+	String toolTipText = element.getAttribute("title");
+
+35.How do perform drag and drop using Selenium WebDriver?
+ANS:The next Actions class is used to perform drag and drop
+	Actions builder = new Actions(driver);
+	Action dragAndDrop = builder.clickAndHold(SourceElement)
+	moveToElement(TargetElement)
+	release(TargetElement)
+	build();
+	dragAndDrop.perform();
+
+36.What is the difference between "type" and "typeAndWait" command?
+ANS:If you need to type keyboard key values into a text field of the web application, "type" command will be used. Another reason for its usage is selecting values of 	the combo box. "typeAndWait" command is used when your typing is completed and software web page start reloading.
+
+37.How to delete cookies in Selenium?
+ANS:To delete cookies we use deleteAllCookies() method
+	driver.manage().deleteAllCookies();
+
+PROGRAMS:
+1.Write Code To Filter Duplicate Elements From An Array And Print As A List?
+2.Write Code To Sort The List Of Strings Using Java Collection?
+3.Write A Function To Reverse A Number In Java?
+4.Write A Method To Check Prime No. In Java?
+
+5.Write A Java Program To Find Out The First Two Max Values From An Array?
+package simple.test;
+
+public class findTwoMaxValue {
+	public void GetTwoMaxValues(int[] nums) {
+
+		int maxOne = 0;
+		int maxTwo = 0;
+		for (int n : nums) {
+			if (maxOne < n) {
+				maxTwo = maxOne;
+				maxOne = n;
+			} else if (maxTwo < n) {
+				maxTwo = n;
+			}
+
+		}
+
+		System.out.println("Max1 - " + maxOne);
+		System.out.println("Max2 - " + maxTwo);
+	}
+
+	public static void main(String[] args) {
+
+		int list[] = { 15, 24, 48, 21, 43, 11, 79, 93 };
+
+		findTwoMaxValue max = new findTwoMaxValue();
+		max.GetTwoMaxValues(list);
+	}
+}
+
+6.Print below pattern: This program is one of the best to understand the for… loop
+1
+12
+123
+1234
+12345
+
+public static void main( String[] args ) throws FileNotFoundException {
+for( int i=1; i<=5; i++ ){
+for( int j=1; j<=i; j++ ){
+System.out.print ( j );
+}
+System.out.println (); //to print new line for each iteration of outer loop
+}
+}
+
+7.Print below pattern: This program is one of the best to understand the for… loop
+*
+***
+*****
+*******
+*********
+
+public static void main( String[] args ){
+int p = 0;
+for( int i=1; i<=5; i++ ){
+for( int k=1; k<=5-i; k++ ){
+System.out.print (" ");
+}
+for( int j=1; j<=i+p; j++ ){
+System.out.print ("*");
+}
+System.out.println ();
+p=p+1;
+}
+}
+
+3. Program to read from file line by line:
+bufferedReader class provides readLine method to be used to read the file line by line.
+
+public static void readFile() throws FileNotFoundException {
+FileReader fr = new FileReader("C:\\Users\\...\\Desktop\\unused.txt");
+BufferedReader br = new BufferedReader(fr);
+StringBuffer str = new StringBuffer();
+try {
+while (br.readLine()!= null){
+str.append(br.readLine());
+}
+} catch (IOException e) {
+e.printStackTrace();
+}
+System.out.println(str);
+}
+
+8.Replace substring with another string in a string
+
+public static void replace() {
+String str = "I use selenium webdriver. selenium is a tool for web applications automation.";
+String toBeReplaced = "selenium";
+String toReplacedWith = "Firefox";
+String[] astr = str.split(toBeReplaced);
+StringBuffer strb = new StringBuffer();
+for ( int i = 0; i <= astr.length - 1; i++ ) {
+strb = strb.append( astr[i] );
+if (i != astr.length - 1) {
+strb = strb.append(toReplacedWith);
+}
+}
+System.out.println(strb);
+
+}
