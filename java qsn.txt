@@ -1,0 +1,1300 @@
+Basic Java Interview Questions
+Q1. Explain JDK, JRE and JVM?
+JDK vs JRE vs JVM
+JDK	JRE	JVM
+It stands for Java Development Kit.	It stands for Java Runtime Environment.	It stands for Java Virtual Machine.
+It is the tool necessary to compile, document and package Java programs.	JRE refers to a runtime environment in which java bytecode can be executed.	It is an abstract machine. It is a specification that provides run-time environment in which java bytecode can be executed.
+Along with JRE, it includes an interpreter/loader, a compiler (javac), an archiver (jar), a documentation generator (javadoc) and other tools needed in Java development. In short, it contains JRE + development tools.	It implements the JVM (Java Virtual Machine) and provides all the class libraries and other support files that JVM uses at runtime. So JRE is a software package that contains what is required to run a Java program. Basically, it’s an implementation of the JVM which physically exists.	JVM follows three notations: Specification(document that describes the implementation of the Java virtual machine), Implementation(program that meets the requirements of JVM specification) and Runtime Instance (instance of JVM is created whenever you write a java command on the command prompt and run class).
+
+Q2. Explain public static void main(String args[]).
+public : Public is an access modifier, which is used to specify who can access this method. Public means that this Method will be accessible by any Class.
+static : It is a keyword in java which identifies it is class based i.e it can be accessed without creating the instance of a Class.
+void : It is the return type of the method. Void defines the method which will not return any value.
+main: It is the name of the method which is searched by JVM as a starting point for an application with a particular signature only. It is the method where the main execution occurs.
+String args[] : It is the parameter passed to the main method.
+
+Q3. Why Java is platform independent?
+Platform independent practically means “write once run anywhere”. Java is called so because of its byte codes which can run on any system irrespective of its underlying operating system.
+
+Q4. Why java is not 100% Object-oriented?
+Java is not 100% Object-oriented because it makes use of eight primitive datatypes such as boolean, byte, char, int, float, double, long, short which are not objects.
+
+Q5. What are wrapper classes?
+Wrapper classes converts the java primitives into the reference types (objects). Every primitive data type has a class dedicated to it. These are known as wrapper classes because they “wrap” the primitive data type into an object of that class. Refer to the below image which displays different primitive type, wrapper class and constructor argument. 
+
+WrapperClass - Java Interview Questions - Edureka
+
+Q6. What are constructors in Java?
+In Java, constructor refers to a block of code which is used to initialize an object. It must have the same name as that of the class. Also, it has no return type and it is automatically called when an object is created.
+
+There are two types of constructors:
+
+Default constructor
+Parameterized constructor
+Q7. What is singleton class and how can we make a class singleton?
+Singleton class is a class whose only one instance can be created at any given time, in one JVM. A class can be made singleton by making its constructor private.
+
+Q8. What is the difference between Array list and vector?
+Array List	Vector
+Array List is not synchronized.	Vector is synchronized.
+Array List is fast as it’s non-synchronized.	Vector is slow as it is thread safe.
+If an element is inserted into the Array List, it increases its Array size by 50%.	Vector defaults to doubling size of its array.
+Array List does not define the increment size.	Vector defines the increment size.
+Array List can only use Iterator for traversing an Array List.	Except Hashtable, Vector is the only other class which uses both Enumeration and Iterator.
+Q9. What is the difference between equals() and == ?
+Equals() method is defined in Object class in Java and used for checking equality of two objects defined by business logic.
+“==” or equality operator in Java is a binary operator provided by Java programming language and used to compare primitives and objects. public boolean equals(Object o) is the method provided by the Object class. The default implementation uses == operator to compare two objects. For example: method can be overridden like String class. equals() method is used to compare the values of two objects.
+public class Equaltest {
+public static void main(String[] args) {
+String str1= new String(“ABCD”);
+String str2= new String(“ABCD”);
+if(Str1 == str2)
+{
+System.out.println("String 1 == String 2 is true");
+}
+else
+{
+System.out.println("String 1 == String 2 is false");
+String Str3 = Str2;
+if( Str2 == Str3)
+{
+System.out.println("String 2 == String 3 is true");
+}
+else
+{
+System.out.println("String 2 == String 3 is false");
+}
+if(Str1.equals(str2))
+{
+System.out.println("String 1 equals string 2 is true");
+}
+else
+{
+System.out.prinltn("String 1 equals string 2 is false");
+}
+}}
+
+Q10. What are the differences between Heap and Stack Memory?
+The major difference between Heap and Stack memory are:
+Features	Stack	Heap
+Memory	Stack memory is used only by one thread of execution.	Heap memory is used by all the parts of the application.
+Access	Stack memory can’t be accessed by other threads.	Objects stored in the heap are globally accessible.
+Memory Management	Follows LIFO manner to free memory.	Memory management is based on generation associated to each object.
+Lifetime	Exists until the end of execution of the thread.	Heap memory lives from the start till the end of application execution.
+Usage	Stack memory only contains local primitive and reference variables to objects in heap space.	Whenever an object is created, it’s always stored in the Heap space.
+ 
+
+In case you are facing any challenges with these java interview questions, please comment your problems in the section below. Apart from this Java Interview Questions Blog, if you want to get trained from professionals on this technology, you can opt for a structured training from edureka! Click below to know more. 
+
+
+OOPS Java Interview Questions: 
+Q1. What is Polymorphism?
+ Polymorphism is briefly described as “one interface, many implementations”. Polymorphism is a characteristic of being able to assign a different meaning or usage to something in different contexts – specifically, to allow an entity such as a variable, a function, or an object to have more than one form. There are two types of polymorphism:
+Compile time polymorphism
+Run time polymorphism
+ Compile time polymorphism is method overloading whereas Runtime time polymorphism is done using inheritance and interface.
+
+Q2. What is runtime polymorphism or dynamic method dispatch?
+In Java, runtime polymorphism or dynamic method dispatch is a process in which a call to an overridden method is resolved at runtime rather than at compile-time. In this process, an overridden method is called through the reference variable of a superclass. Let’s take a look at the example below to understand it better.
+class Car {
+void run()
+{
+System.out.println(“car is running”); 
+}
+}
+class Audi extends Car {
+void run()
+{
+System.out.prinltn(“Audi is running safely with 100km”);
+}
+public static void main(String args[])
+{
+Car b= new Audi();    //upcasting
+b.run();
+}
+}
+
+Q3. What is the difference between abstract classes and interfaces?
+Abstract Class	Interfaces
+An abstract class can provide complete, default code and/or just the details that have to be overridden.	An interface cannot provide any code at all,just the signature.
+In case of abstract class, a class may extend only one abstract class.	A Class may implement several interfaces.
+An abstract class can have non-abstract methods.	All methods of an Interface are abstract.
+An abstract class can have instance variables.	An Interface cannot have instance variables
+An abstract class can have any visibility: public, private, protected.	An Interface visibility must be public (or) none.
+If we add a new method to an abstract class then we have the option of providing default implementation and therefore all the existing code might work properly	If we add a new method to an Interface then we have to track down all the implementations of the interface and define implementation for the new method
+An abstract class can contain constructors	An Interface cannot contain constructors
+Abstract classes are fast	Interfaces are slow as it requires extra indirection to find corresponding method in the actual class
+
+Q4. What is method overloading and method overriding?
+Method Overloading :
+In Method Overloading, Methods of the same class shares the same name but each method must have different number of parameters or parameters having different types and order.
+Method Overloading is to “add” or “extend” more to method’s behavior.
+It is a compile time polymorphism.
+The methods must have different signature.
+It may or may not need inheritance in Method Overloading.
+Let’s take a look at the example below to understand it better.
+class Adder {
+Static int add(int a, int b)
+{
+return a+b;
+}
+Static double add( double a, double b)
+{
+return a+b;
+}
+public static void main(String args[])
+{
+System.out.println(Adder.add(11,11));
+System.out.println(Adder.add(12.3,12.6));
+}}
+
+Method Overriding:  
+In Method Overriding, sub class have the same method with same name and exactly the same number and type of parameters and same return type as a super class.
+Method Overriding is to “Change” existing behavior of method.
+It is a run time polymorphism.
+The methods must have same signature.
+It always requires inheritance in Method Overriding.
+Let’s take a look at the example below to understand it better.
+class Car {
+void run(){
+System.out.println(“car is running”); 
+}
+Class Audi extends Car{
+void run()
+{
+System.out.prinltn(“Audi is running safely with 100km”);
+}
+public static void main( String args[])
+{
+Car b=new Audi();
+b.run();
+}
+}
+
+Q5. Can you override a private or static method in Java?
+You cannot override a private or static method in Java. If you create a similar method with same return type and same method arguments in child class then it will hide the super class method; this is known as method hiding. Similarly, you cannot override a private method in sub class because it’s not accessible there. What you can do is create another private method with the same name in the child class. Let’s take a look at the example below to understand it better.
+
+class Base {
+private static void display() {
+System.out.println("Static or class method from Base");
+}
+public void print() {
+System.out.println("Non-static or instance method from Base");
+}
+class Derived extends Base {
+private static void display() {
+System.out.println("Static or class method from Derived");
+}
+public void print() {
+System.out.println("Non-static or instance method from Derived");
+}
+public class test {
+public static void main(String args[])
+{
+Base obj= new Derived();
+obj1.display();
+obj1.print();
+}
+}
+
+Q6. What is multiple inheritance? Is it supported by Java?
+MultipleInheritance - Java Interview Questions - EdurekaIf a child class inherits the property from multiple classes is known as multiple inheritance. Java does not allow to extend multiple classes.
+
+The problem with multiple inheritance is that if multiple parent classes have a same method name, then at runtime it becomes difficult for the compiler to decide which method to execute from the child class.
+
+Therefore, Java doesn’t support multiple inheritance. The problem is commonly referred as Diamond Problem.
+
+ 
+Q7. What is association?
+Association is a relationship where all object have their own lifecycle and there is no owner. Let’s take an example of Teacher and Student. Multiple students can associate with a single teacher and a single student can associate with multiple teachers but there is no ownership between the objects and both have their own lifecycle. These relationship can be one to one, One to many, many to one and many to many.
+
+Q8. What do you mean by aggregation?
+Aggregation is a specialized form of Association where all object have their own lifecycle but there is ownership and child object can not belongs to another parent object. Let’s take an example of Department and teacher. A single teacher can not belongs to multiple departments, but if we delete the department teacher object will not destroy. 
+
+Q9. What is composition in Java?
+Composition is again specialized form of Aggregation and we can call this as a “death” relationship. It is a strong type of Aggregation. Child object dose not have their lifecycle and if parent object deletes all child object will also be deleted. Let’s take again an example of relationship between House and rooms. House can contain multiple rooms there is no independent life of room and any room can not belongs to two different house if we delete the house room will automatically delete.
+
+In case you are facing any challenges with these java interview questions, please comment your problems in the section below. Apart from this Java Interview Questions Blog, if you want to get trained from professionals on this technology, you can opt for a structured training from edureka! Click below to know more.
+
+
+Servlets Interview Questions  
+Q1. What is a servlet?
+Java Servlet is server side technologies to extend the capability of web servers by providing support for dynamic response and data persistence.
+The javax.servlet and javax.servlet.http packages provide interfaces and classes for writing our own servlets.
+All servlets must implement the javax.servlet.Servlet interface, which defines servlet lifecycle methods. When implementing a generic service, we can extend the GenericServlet class provided with the Java Servlet API. The HttpServlet class provides methods, such as doGet() and doPost(), for handling HTTP-specific services.
+Most of the times, web applications are accessed using HTTP protocol and thats why we mostly extend HttpServlet class. Servlet API hierarchy is shown in below image.
+Servlet - Java Interview Questions - Edureka
+
+Q2. What are the differences between Get and Post methods?
+Get	Post
+Limited amount of data can be sent because data is sent in header.	Large amount of data can be sent because data is sent in body.
+ Not Secured because data is exposed in URL bar.	 Secured because data is not exposed in URL bar.
+ Can be bookmarked	 Cannot be bookmarked
+ Idempotent	 Non-Idempotent
+ It is more efficient and used than Post	 It is less efficient and used
+Q3. What is Request Dispatcher?
+RequestDispatcher interface is used to forward the request to another resource that can be HTML, JSP or another servlet in same application. We can also use this to include the content of another resource to the response.
+
+There are two methods defined in this interface:
+
+1.void forward()
+
+2.void include()
+
+ForwardMethod - Java Interview Questions - Edureka
+IncludeMethod - Java Interview Questions - Edureka
+ 
+
+Q4. What are the differences between forward() method and sendRedirect() methods?
+Forward() method	SendRedirect() method
+forward() sends the same request to another resource.	sendRedirect() method sends new request always because it uses the URL bar of the browser.
+ forward() method works at server side.	 sendRedirect() method works at client side.
+ forward() method works within the server only.	sendRedirect() method works within and outside the server.
+
+Q5. What is the life-cycle of a servlet?
+There are 5 stages in the lifecycle of a servlet:LifeCycleServlet - Java Interview Questions - Edureka
+Servlet is loaded
+Servlet is instantiated
+Servlet is initialized
+Service the request
+Servlet is destroyed
+
+Q6. How does cookies work in Servlets?
+Cookies are text data sent by server to the client and it gets saved at the client local machine.
+Servlet API provides cookies support through javax.servlet.http.Cookie class that implements Serializable and Cloneable interfaces.
+HttpServletRequest getCookies() method is provided to get the array of Cookies from request, since there is no point of adding Cookie to request, there are no methods to set or add cookie to request.
+Similarly HttpServletResponse addCookie(Cookie c) method is provided to attach cookie in response header, there are no getter methods for cookie.
+
+Q7. What are the differences between ServletContext vs ServletConfig?
+The difference between ServletContext and ServletConfig in Servlets JSP is in below tabular format.
+ServletConfig	ServletContext
+Servlet config object represent single servlet	It represent whole web application running on particular JVM and common for all the servlet
+Its like local parameter associated with particular servlet	Its like global parameter associated with whole application
+It’s a name value pair defined inside the servlet section of web.xml file so it has servlet wide scope	ServletContext has application wide scope so define outside of servlet tag in web.xml file.
+getServletConfig() method is used to get the config object	getServletContext() method is  used to get the context object.
+for example shopping cart of a user is a specific to particular user so here we can use servlet config	To get the MIME type of a file or application session related information is stored using servlet context object.
+Q8. What are the different methods of session management in servlets?
+Session is a conversational state between client and server and it can consists of multiple request and response between client and server. Since HTTP and Web Server both are stateless, the only way to maintain a session is when some unique information about the session (session id) is passed between server and client in every request and response.
+
+Some of the common ways of session management in servlets are:
+
+User Authentication
+HTML Hidden Field
+Cookies
+URL Rewriting
+Session Management API
+
+SessionManagement - Java Interview Questions - Edureka
+In case you are facing any challenges with these java interview questions, please comment your problems in the section below. Apart from this Java Interview Questions Blog, if you want to get trained from professionals on this technology, you can opt for a structured training from edureka! Click below to know more.
+
+
+
+ JDBC Interview Questions 
+Q1. What is JDBC Driver?
+JDBC Driver is a software component that enables java application to interact with the database. There are 4 types of JDBC drivers:
+
+JDBC-ODBC bridge driver
+Native-API driver (partially java driver)
+Network Protocol driver (fully java driver)
+Thin driver (fully java driver)
+
+Q2. What are the steps to connect to a database in java?
+Registering the driver class
+Creating connection
+Creating statement
+Executing queries
+Closing connection
+
+Q3. What are the JDBC API components?
+The java.sql package contains interfaces and classes for JDBC API.
+
+Interfaces:
+Connection
+Statement
+PreparedStatement
+ResultSet
+ResultSetMetaData
+DatabaseMetaData
+CallableStatement etc.
+Classes:
+DriverManager
+Blob
+Clob
+Types
+
+SQLException etc.
+Q4. What is the role of JDBC DriverManager class?
+The DriverManager class manages the registered drivers. It can be used to register and unregister drivers. It provides factory method that returns the instance of Connection.
+
+Q5. What is JDBC Connection interface?
+The Connection interface maintains a session with the database. It can be used for transaction management. It provides factory methods that returns the instance of Statement, PreparedStatement, CallableStatement and DatabaseMetaData.
+
+ConnectionInterface - Java Interview Questions - Edureka
+Q6.  What is the purpose of JDBC ResultSet interface?
+The ResultSet object represents a row of a table. It can be used to change the cursor pointer and get the information from the database.
+
+Q7. What is JDBC ResultSetMetaData interface?
+The ResultSetMetaData interface returns the information of table such as total number of columns, column name, column type etc.
+
+Q8. What is JDBC DatabaseMetaData interface?
+The DatabaseMetaData interface returns the information of the database such as username, driver name, driver version, number of tables, number of views etc.
+
+Q9. What do you mean by batch processing in JDBC?
+Batch processing helps you to group related SQL statements into a batch and execute them instead of executing a single query. By using batch processing technique in JDBC, you can execute multiple queries which makes the performance faster.
+
+Q10. What is the difference between execute, executeQuery, executeUpdate?
+Statement execute(String query) is used to execute any SQL query and it returns TRUE if the result is an ResultSet such as running Select queries. The output is FALSE when there is no ResultSet object such as running Insert or Update queries. We can use getResultSet() to get the ResultSet and getUpdateCount() method to retrieve the update count.
+
+Statement executeQuery(String query) is used to execute Select queries and returns the ResultSet. ResultSet returned is never null even if there are no records matching the query. When executing select queries we should use executeQuery method so that if someone tries to execute insert/update statement it will throw java.sql.SQLException with message “executeQuery method can not be used for update”.
+
+Statement executeUpdate(String query) is used to execute Insert/Update/Delete (DML) statements or DDL statements that returns nothing. The output is int and equals to the row count for SQL Data Manipulation Language (DML) statements. For DDL statements, the output is 0.
+
+
+You should use execute() method only when you are not sure about the type of statement else use executeQuery or executeUpdate method.
+
+
+
+Spring Interview Questions 
+Q1. What is a Spring?
+Wikipedia defines the Spring framework as “an application framework and inversion of control container for the Java platform. The framework’s core features can be used by any Java application, but there are extensions for building web applications on top of the Java EE platform.” Spring is essentially a lightweight, integrated framework that can be used for developing enterprise applications in java.
+
+Q2. Name the different modules of the Spring framework.
+Some of the important Spring Framework modules are:
+
+Spring Context – for dependency injection.
+Spring AOP – for aspect oriented programming.
+Spring DAO – for database operations using DAO pattern
+Spring JDBC – for JDBC and DataSource support.
+Spring ORM – for ORM tools support such as Hibernate
+Spring Web Module – for creating web applications.
+Spring MVC – Model-View-Controller implementation for creating web applications, web services etc.
+SpringFramework - Java Interview Questions - Edureka Q3. List some of the important annotations in annotation-based Spring configuration.
+The important annotations are:
+
+@Required
+@Autowired
+@Qualifier
+@Resource
+@PostConstruct
+@PreDestroy
+Q4. Explain Bean in Spring and List the different Scopes of Spring bean.
+Beans are objects that form the backbone of a Spring application. They are managed by the Spring IoC container. In other words, a bean is an object that is instantiated, assembled, and managed by a Spring IoC container.
+
+There are five Scopes defined in Spring beans.
+
+SpringBean - Java Interview Questions - Edureka
+
+Singleton: Only one instance of the bean will be created for each container. This is the default scope for the spring beans. While using this scope, make sure spring bean doesn’t have shared instance variables otherwise it might lead to data inconsistency issues because it’s not thread-safe.
+Prototype: A new instance will be created every time the bean is requested.
+Request: This is same as prototype scope, however it’s meant to be used for web applications. A new instance of the bean will be created for each HTTP request.
+Session: A new bean will be created for each HTTP session by the container.
+Global-session: This is used to create global session beans for Portlet applications.
+
+Q5. Explain the role of DispatcherServlet and ContextLoaderListener.
+DispatcherServlet is basically the front controller in the Spring MVC application as it loads the spring bean configuration file and initializes all the beans that have been configured. If annotations are enabled, it also scans the packages to configure any bean annotated with @Component, @Controller, @Repository or @Service annotations.
+
+DispatcherServlet - Java Interview Questions - EdurekaContextLoaderListener, on the other hand, is the listener to start up and shut down the WebApplicationContext in Spring root. Some of its important functions includes tying up the lifecycle of Application Context to the lifecycle of the ServletContext and automating the creation of ApplicationContext.
+
+ContextLoader - Java Interview Questions - Edureka
+Q6. What are the differences between constructor injection and setter injection?
+No.	Constructor Injection	Setter Injection
+ 1)	 No Partial Injection	 Partial Injection
+ 2)	 Desn’t override the setter property	 Overrides the constructor property if both are defined.
+ 3)	Creates new instance if any modification occurs	Doesn’t create new instance if you change the property value
+ 4) 	 Better for too many properties	 Better for few properties.
+ 
+
+Q7. What is autowiring in Spring? What are the autowiring modes?
+Autowiring enables the programmer to inject the bean automatically. We don’t need to write explicit injection logic. Let’s see the code to inject bean using dependency injection.
+
+<bean id=“emp” class=“com.javatpoint.Employee” autowire=“byName” />  
+The autowiring modes are given below:
+
+No.	Mode	Description
+ 1)	 no	 this is the default mode, it means autowiring is not enabled.
+ 2)	 byName	 Injects the bean based on the property name. It uses setter method.
+ 3)	 byType	 Injects the bean based on the property type. It uses setter method.
+ 4)	 constructor	 It injects the bean using constructor
+Q8. How to handle exceptions in Spring MVC Framework?
+Spring MVC Framework provides following ways to help us achieving robust exception handling.
+
+Controller Based:
+We can define exception handler methods in our controller classes. All we need is to annotate these methods with @ExceptionHandler annotation.
+
+Global Exception Handler:
+Exception Handling is a cross-cutting concern and Spring provides @ControllerAdvice annotation that we can use with any class to define our global exception handler.
+
+HandlerExceptionResolver implementation: 
+For generic exceptions, most of the times we serve static pages. Spring Framework provides HandlerExceptionResolver interface that we can implement to create global exception handler. The reason behind this additional way to define global exception handler is that Spring framework also provides default implementation classes that we can define in our spring bean configuration file to get spring framework exception handling benefits.
+
+Q9. What are some of the important Spring annotations which you have used?
+Some of the Spring annotations that I have used in my project are:
+
+@Controller – for controller classes in Spring MVC project.
+
+@RequestMapping – for configuring URI mapping in controller handler methods. This is a very important annotation, so you should go through Spring MVC RequestMapping Annotation Examples
+
+@ResponseBody – for sending Object as response, usually for sending XML or JSON data as response.
+
+@PathVariable – for mapping dynamic values from the URI to handler method arguments.
+
+@Autowired – for autowiring dependencies in spring beans.
+
+@Qualifier – with @Autowired annotation to avoid confusion when multiple instances of bean type is present.
+
+@Service – for service classes.
+
+@Scope – for configuring scope of the spring bean.
+
+@Configuration, @ComponentScan and @Bean – for java based configurations.
+
+AspectJ annotations for configuring aspects and advices, @Aspect, @Before, @After, @Around, @Pointcut etc.
+
+Q10. How to integrate Spring and Hibernate Frameworks?
+We can use Spring ORM module to integrate Spring and Hibernate frameworks, if you are using Hibernate 3+ where SessionFactory provides current session, then you should avoid using HibernateTemplate or HibernateDaoSupport classes and better to use DAO pattern with dependency injection for the integration.
+
+Also Spring ORM provides support for using Spring declarative transaction management, so you should utilize that rather than going for hibernate boiler-plate code for transaction management.
+
+In case you are facing any challenges with these java interview questions, please comment your problems in the section below. Apart from this Java Interview Questions Blog, if you want to get trained from professionals on this technology, you can opt for a structured training from edureka! Click below to know more.
+
+
+
+Hibernate Interview Questions
+Q1. What is Hibernate Framework?
+Object-relational mapping or ORM is the programming technique to map application domain model objects to the relational database tables. Hibernate is java based ORM tool that provides framework for mapping application domain objects to the relational database tables and vice versa.
+
+Hibernate provides reference implementation of Java Persistence API, that makes it a great choice as ORM tool with benefits of loose coupling. We can use Hibernate persistence API for CRUD operations. Hibernate framework provide option to map plain old java objects to traditional database tables with the use of JPA annotations as well as XML based configuration.
+
+Similarly hibernate configurations are flexible and can be done from XML configuration file as well as programmatically.
+
+Q2. What are the important benefits of using Hibernate Framework?
+Some of the important benefits of using hibernate framework are:
+
+Hibernate eliminates all the boiler-plate code that comes with JDBC and takes care of managing resources, so we can focus on business logic.
+Hibernate framework provides support for XML as well as JPA annotations, that makes our code implementation independent.
+Hibernate provides a powerful query language (HQL) that is similar to SQL. However, HQL is fully object-oriented and understands concepts like inheritance, polymorphism and association.
+Hibernate is an open source project from Red Hat Community and used worldwide. This makes it a better choice than others because learning curve is small and there are tons of online documentations and help is easily available in forums.
+Hibernate is easy to integrate with other Java EE frameworks, it’s so popular that Spring Framework provides built-in support for integrating hibernate with Spring applications.
+Hibernate supports lazy initialization using proxy objects and perform actual database queries only when it’s required.
+Hibernate cache helps us in getting better performance.
+For database vendor specific feature, hibernate is suitable because we can also execute native sql queries.
+Overall hibernate is the best choice in current market for ORM tool, it contains all the features that you will ever need in an ORM tool.
+
+Q3. Explain Hibernate architecture?
+HibernateArchitecture - Java Interview Questions - Edureka
+
+Q4 What are the differences between get and load methods?
+The differences between get() and load() methods are given below.
+
+No.	get()	load()
+ 1)	 Returns null if object is not found.	Throws ObjectNotFoundException if object is not found.
+ 2)	 get() method always hit the database.	 load() method doesn’t hit the database.
+ 3)	 It returns real object not proxy.	 It returns proxy object.
+ 4)	It should be used if you are not sure about the existence of instance.	It should be used if you are sure that instance exists.
+Q5 What are the advantages of Hibernate over JDBC?
+Some of the important advantages of Hibernate framework over JDBC are:
+
+Hibernate removes a lot of boiler-plate code that comes with JDBC API, the code looks more cleaner and readable.
+Hibernate supports inheritance, associations and collections. These features are not present with JDBC API.
+Hibernate implicitly provides transaction management, in fact most of the queries can’t be executed outside transaction. In JDBC API, we need to write code for transaction management using commit and rollback. 
+JDBC API throws SQLException that is a checked exception, so we need to write a lot of try-catch block code. Most of the times it’s redundant in every JDBC call and used for transaction management. Hibernate wraps JDBC exceptions and throw JDBCException or HibernateException un-checked exception, so we don’t need to write code to handle it. Hibernate built-in transaction management removes the usage of try-catch blocks.
+Hibernate Query Language (HQL) is more object oriented and close to java programming language. For JDBC, we need to write native sql queries.
+Hibernate supports caching that is better for performance, JDBC queries are not cached hence performance is low.
+Hibernate provide option through which we can create database tables too, for JDBC tables must exist in the database.
+Hibernate configuration helps us in using JDBC like connection as well as JNDI DataSource for connection pool. This is very important feature in enterprise application and completely missing in JDBC API.
+
+Hibernate supports JPA annotations, so code is independent of implementation and easily replaceable with other ORM tools. JDBC code is very tightly coupled with the application.
+In case you are facing any challenges with these java interview questions, please comment your problems in the section below. Apart from this Java Interview Questions Blog, if you want to get trained from professionals on this technology, you can opt for a structured training from edureka! Click below to know more.
+
+
+Java Interview Questions: JSP
+Q1. What are the life-cycle methods for a jsp?
+Method	Description
+ public void jspInit()	It is invoked only once, same as init method of servlet.
+public void _jspService(ServletRequest request,ServletResponse)throws ServletException,IOException	It is invoked at each request, same as service() method of servlet.
+ public void jspDestroy()	It is invoked only once, same as destroy() method of servlet.
+
+Q2. What are the JSP implicit objects?
+JSP provides 9 implicit objects by default. They are as follows:
+
+Object	Type
+1) out	 JspWriter
+2) request	 HttpServletRequest
+3) response	 HttpServletResponse
+4) config	 ServletConfig
+5) session	 HttpSession
+6) application	 ServletContext
+7) pageContext	 PageContext
+8) page	 Object
+9) exception	 Throwable
+
+Q3. What are the differences between include directive and include action?
+include directive	include action
+The include directive includes the content at page translation time.	The include action includes the content at request time.
+The include directive includes the original content of the page so page size increases at runtime.	The include action doesn’t include the original content rather invokes the include() method of Vendor provided class.
+ It’s better for static pages.	 It’s better for dynamic pages.
+
+Q4. How to disable caching on back button of the browser?
+<%
+response.setHeader(“Cache-Control”,”no-store”);
+response.setHeader(“Pragma”,”no-cache”);
+response.setHeader (“Expires”, “0”);                    //prevents caching at the proxy server
+%>   
+
+Q5. What are the different tags provided in JSTL?
+There are 5 type of JSTL tags.
+
+core tags
+sql tags
+xml tags
+internationalization tags
+functions tags
+Q6. How to disable session in JSP?
+<%@ page session=“false” %>   
+Q7.  How to delete a Cookie in a JSP?
+The following code explain how to delete a Cookie in a JSP :
+
+
+Cookie mycook = new Cookie("name1","value1");
+ 
+response.addCookie(mycook1);
+ 
+Cookie killmycook = new Cookie("mycook1","value1");
+ 
+killmycook . set MaxAge ( 0 );
+ 
+killmycook . set Path ("/");
+ 
+killmycook . addCookie ( killmycook 1 );
+Q8. Explain the jspDestroy() method.
+jspDestry() method is invoked from javax.servlet.jsp.JspPage interface whenever a JSP page is about to be destroyed. Servlets destroy methods can be easily overridden to perform cleanup, like when closing a database connection.
+
+Q9.  How is JSP better than Servlet technology?
+JSP is a technology on the server’s side to make content generation simple. They are document centric, whereas servlets are programs. A Java server page can contain fragments of Java program, which execute and instantiate Java classes. However, they occur inside HTML template file. It provides the framework for development of a Web Application.
+
+Q10. Why should we not configure JSP standard tags in web.xml?
+
+We don’t need to configure JSP standard tags in web.xml because when container loads the web application and find TLD files, it automatically configures them to be used directly in the application JSP pages. We just need to include it in the JSP page using taglib directive.
+
+In case you are facing any challenges with these java interview questions, please comment your problems in the section below. Apart from this Java Interview Questions Blog, if you want to get trained from professionals on this technology, you can opt for a structured training from edureka! Click below to know more.
+
+
+
+Exception and Thread Java Interview Questions
+Q1. What is difference between Error and Exception?
+An error is an irrecoverable condition occurring at runtime. Such as OutOfMemory error. These JVM errors you can not repair them at runtime.Though error can be caught in catch block but the execution of application will come to a halt and is not recoverable.
+
+While exceptions are conditions that occur because of bad input or human error etc. e.g. FileNotFoundException will be thrown if the specified file does not exist. Or a NullPointerException will take place if you try using a null reference. In most of the cases it is possible to recover from an exception (probably by giving user a feedback for entering proper values etc.
+
+Q2. How can you handle Java exceptions?
+There are five keywords used to handle exceptions in java: 
+
+try
+catch
+finally
+throw
+throws
+
+Q3. What are the differences between Checked Exception and Unchecked Exception?
+Checked Exception
+The classes that extend Throwable class except RuntimeException and Error are known as checked exceptions. 
+Checked exceptions are checked at compile-time.
+Example: IOException, SQLException etc.
+Unchecked Exception
+The classes that extend RuntimeException are known as unchecked exceptions. 
+Unchecked exceptions are not checked at compile-time.
+Example: ArithmeticException, NullPointerException etc.
+
+Q4. What purpose does the keywords final, finally, and finalize fulfill? 
+Final:
+Final is used to apply restrictions on class, method and variable. Final class can’t be inherited, final method can’t be overridden and final variable value can’t be changed. Let’s take a look at the example below to understand it better.
+
+class FinalVarExample {
+public static void main( String args[])
+{
+final int a=10;   // Final variable
+a=50;             //Error as value can't be changed
+}
+Finally
+Finally is used to place important code, it will be executed whether exception is handled or not. Let’s take a look at the example below to understand it better.
+
+class FinallyExample {
+public static void main(String args[]){
+try {
+int x=100;
+}
+catch(Exception e) {
+System.out.println(e);
+}
+finally {
+System.out.println("finally block is executing");}
+}}
+}
+Finalize
+Finalize is used to perform clean up processing just before object is garbage collected. Let’s take a look at the example below to understand it better.
+
+
+class FinalizeExample {
+public void finalize() {
+System.out.println("Finalize is called");
+}
+public static void main(String args[])
+{
+FinalizeExample f1=new FinalizeExample();
+FinalizeExample f2=new FinalizeExample();
+f1= NULL;
+f2=NULL;
+System.gc();
+}
+}
+
+ Q5. What are the differences between throw and throws? 
+throw keyword	throws keyword
+Throw is used to explicitly throw an exception.	Throws is used to declare an exception.
+Checked exceptions can not be propagated with throw only.	Checked exception can be propagated with throws.
+Throw is followed by an instance.	Throws is followed by class.
+Throw is used within the method.	Throws is used with the method signature.
+You cannot throw multiple exception	You can declare multiple exception e.g. public void method()throws IOException,SQLException.
+
+Q6. What is exception hierarchy in java?
+The hierarchy is as follows:
+
+Throwable is a parent class of all Exception classes. There are two types of Exceptions: Checked exceptions and UncheckedExceptions or RunTimeExceptions. Both type of exceptions extends Exception class whereas errors are further classified into Virtual Machine error and Assertion error.
+
+ExceptionHierarchy - Java Interview Questions - Edureka
+
+Q7. How to create a custom Exception?
+To create you own exception extend the Exception class or any of its subclasses.
+
+class New1Exception extends Exception { }               // this will create Checked Exception
+class NewException extends IOExcpetion { }             // this will create Checked exception
+class NewException extends NullPonterExcpetion { }  // this will create UnChecked exception
+
+Q8. What are the important methods of Java Exception Class?
+Exception and all of it’s subclasses doesn’t provide any specific methods and all of the methods are defined in the base class Throwable.
+
+String getMessage() – This method returns the message String of Throwable and the message can be provided while creating the exception through it’s constructor.
+String getLocalizedMessage() – This method is provided so that subclasses can override it to provide locale specific message to the calling program. Throwable class implementation of this method simply use getMessage() method to return the exception message.
+Synchronized Throwable getCause() – This method returns the cause of the exception or null id the cause is unknown.
+String toString() – This method returns the information about Throwable in String format, the returned String contains the name of Throwable class and localized message.
+void printStackTrace() – This method prints the stack trace information to the standard error stream, this method is overloaded and we can pass PrintStream or PrintWriter as argument to write the stack trace information to the file or stream.
+
+Q9. What are the differences between processes and threads?
+ 	Process	Thread
+Definition	An executing instance of a program is called a process.	A thread is a subset of the process.
+Communication	Processes must use inter-process communication to communicate with sibling processes.	Threads can directly communicate with other threads of its process.
+Control	Processes can only exercise control over child processes.	Threads can exercise considerable control over threads of the same process.
+Changes	Any change in the parent process does not affect child processes.	Any change in the main thread may affect the behavior of the other threads of the process.
+Memory	Run in separate memory spaces.	Run in shared memory spaces.
+Controlled by	Process is controlled by the operating system.	Threads are controlled by programmer in a program.
+Dependence	Processes are independent.	Threads are dependent.
+Q10. What is a finally block? Is there a case when finally will not execute?
+Finally block is a block which always execute a set of statements. It is always associated with a try block regardless of any exception that occurs or not. 
+Yes, finally will not be executed if the program exits either by calling System.exit() or by causing a fatal error that causes the process to abort.
+
+Q11. What is synchronization?
+Synchronization refers to multi-threading. A synchronized block of code can be executed by only one thread at a time. As Java supports execution of multiple threads, two or more threads may access the same fields or objects. Synchronization is a process which keeps all concurrent threads in execution to be in sync. Synchronization avoids memory consistency errors caused due to inconsistent view of shared memory. When a method is declared as synchronized the thread holds the monitor for that method’s object. If another thread is executing the synchronized method the thread is blocked until that thread releases the monitor.
+
+Synchronization - Java Interview Questions - Edureka
+
+ Q12. Can we write multiple catch blocks under single try block? 
+Yes we can have multiple catch blocks under single try block but the approach should be from specific to general. Let’s understand this with a programmatic example.
+
+public class Example {
+public static void main(String args[]) {
+try {
+int a[]= new int[10];
+a[10]= 10/0;
+}
+catch(ArithmeticException e)
+{
+System.out.println("Arithmetic exception in first catch block");
+}
+catch(ArrayIndexOutOfBoundsException e)
+{
+System.out.println("Array index out of bounds in second catch block");
+}
+catch(Exception e)
+{
+System.out.println("Any exception in third catch block");
+}
+}
+
+Q13. What are the important methods of Java Exception Class?
+Methods are defined in the base class Throwable. Some of the important methods of Java exception class are stated below. 
+
+String getMessage() – This method returns the message String about the exception . The message can be provided through its constructor.
+public StackTraceElement[] getStackTrace() – This method returns an array containing each element on the stack trace. The element at index 0 represents the top of the call stack whereas the last element in the array represents the method at the bottom of the call stack.
+Synchronized Throwable getCause() – This method returns the cause of the exception or null id as represented by a Throwable object.
+
+String toString() – This method returns the information in String format. The returned String contains the name of Throwable class and localized message.
+void printStackTrace() – This method prints the stack trace information to the standard error stream.
+
+Multithreading, Concurrency and Thread basics Questions
+
+1) Can we make array volatile in Java?
+This is one of the tricky Java multi-threading questions you will see in senior Java developer Interview. Yes, you can make an array volatile in Java but only the reference which is pointing to an array, not the whole array. What I mean, if one thread changes the reference variable to points to another array, that will provide a volatile guarantee, but if multiple threads are changing individual array elements they won't be having happens before guarantee provided by the volatile modifier.
+
+
+2) Can volatile make a non-atomic operation to atomic?
+This another good question I love to ask on volatile, mostly as a follow-up of the previous question. This question is also not easy to answer because volatile is not about atomicity, but there are cases where you can use a volatile variable to make the operation atomic.
+
+One example I have seen is having a long field in your class. If you know that a long field is accessed by more than one thread e.g. a counter, a price field or anything, you better make it volatile. Why? because reading to a long variable is not atomic in Java and done in two steps, If one thread is writing or updating long value, it's possible for another thread to see half value (fist 32-bit). While reading/writing a volatile long or double (64 bit) is atomic.
+
+
+
+3) What are practical uses of volatile modifier? 
+One of the practical use of the volatile variable is to make reading double and long atomic. Both double and long are 64-bit wide and they are read in two parts, first 32-bit first time and next 32-bit second time, which is non-atomic but volatile double and long read is atomic in Java. Another use of the volatile variable is to provide a memory barrier, just like it is used in Disrupter framework. Basically, Java Memory model inserts a write barrier after you write to a volatile variable and a read barrier before you read it. Which means, if you write to volatile field then it's guaranteed that any thread accessing that variable will see the value you wrote and anything you did before doing that right into the thread is guaranteed to have happened and any updated data values will also be visible to all threads, because the memory barrier flushed all other writes to the cache.
+
+
+4) What guarantee volatile variable provides? (answer)
+volatile variables provide the guarantee about ordering and visibility e.g. volatile assignment cannot be re-ordered with other statements but in the absence of any synchronization instruction compiler, JVM or JIT are free to reorder statements for better performance. volatile also provides the happens-before guarantee which ensures changes made in one thread is visible to others. In some cases volatile also provide atomicity e.g. reading 64-bit data types like long and double are not atomic but read of volatile double or long is atomic.
+
+
+
+5) Which one would be easy to write? synchronization code for 10 threads or 2 threads?
+In terms of writing code, both will be of same complexity because synchronization code is independent of a number of threads. Choice of synchronization though depends upon a number of threads because the number of thread present more contention, so you go for advanced synchronization technique e.g. lock stripping, which requires more complex code and expertise.
+
+
+6) How do you call wait() method? using if block or loop? Why? (answer)
+wait() method should always be called in loop because it's possible that until thread gets CPU to start running again the condition might not hold, so it's always better to check condition in loop before proceeding. Here is the standard idiom of using wait and notify method in Java:
+// The standard idiom for using the wait method
+synchronized (obj) {
+   while (condition does not hold)
+      obj.wait(); // (Releases lock, and reacquires on wakeup)
+      ... // Perform action appropriate to condition
+}
+See Effective Java Item 69 to learn more about why wait method should call in the loop.
+
+
+7)  What is false sharing in the context of multi-threading? 
+false sharing is one of the well-known performance issues on multi-core systems, where each process has its local cache. false sharing occurs when threads on different processor modify variables that reside on same cache line as shown in the following image:
+
+Java Interview questions for experienced programmers
+
+False sharing is very hard to detect because the thread may be accessing completely different global variables that happen to be relatively close together in memory. Like many concurrency issues, the primary way to avoid false sharing is careful code review and aligning your data structure with the size of a cache line.
+
+
+8) What is busy spin? Why should you use it?
+Busy spin is one of the technique to wait for events without releasing CPU. It's often done to avoid losing data in CPU cached which is lost if the thread is paused and resumed in some other core. So, if you are working on low latency system where your order processing thread currently doesn't have any order, instead of sleeping or calling wait(), you can just loop and then again check the queue for new messages. It's only beneficial if you need to wait for a very small amount of time e.g. in micro seconds or nano seconds. LMAX Disrupter framework, a high-performance inter-thread messaging library has a BusySpinWaitStrategy which is based on this concept and uses a busy spin loop for EventProcessors waiting on the barrier.
+
+
+9) How do you take thread dump in Java?
+You can take a thread dump of Java application in Linux by using kill -3 PID, where PID is the process id of Java process. In Windows, you can press Ctrl + Break. This will instruct JVM to print thread dump in standard out or err and it could go to console or log file depending upon your application configuration. If you have used Tomcat then when
+
+
+
+10) is Swing thread-safe? (answer)
+No, Swing is not thread-safe. You cannot update Swing components e.g. JTable, JList or JPanel from any thread, in fact, they must be updated from GUI or AWT thread. That's why swings provide invokeAndWait() and invokeLater() method to request GUI update from any other threads. This methods put update request in AWT threads queue and can wait till update or return immediately for an asynchronous update. You can also check the detailed answer to learn more.
+
+
+11) What is a thread local variable in Java? (answer)
+Thread-local variables are variables confined to a thread, its like thread's own copy which is not shared between multiple threads. Java provides a ThreadLocal class to support thread-local variables. It's one of the many ways to achieve thread-safety. Though be careful while using thread local variable in manged environment e.g. with web servers where worker thread out lives any application variable. Any thread local variable which is not removed once its work is done can potentially cause a memory leak in Java application.
+
+
+12) Write wait-notify code for producer-consumer problem? (answer)
+Please see the answer for a code example. Just remember to call wait() and notify() method from synchronized block and test waiting for condition on the loop instead of if block.
+
+
+13) Write code for thread-safe Singleton in Java? (answer)
+Please see the answer for a code example and step by step guide to creating thread-safe singleton class in Java. When we say thread-safe, which means Singleton should remain singleton even if initialization occurs in the case of multiple threads. Using Java enum as Singleton class is one of the easiest ways to create a thread-safe singleton in Java.
+
+
+14) The difference between sleep and wait in Java? (answer)
+Though both are used to pause currently running thread, sleep() is actually meant for short pause because it doesn't release lock, while wait() is meant for conditional wait and that's why it release lock which can then be acquired by another thread to change the condition on which it is waiting.
+
+
+15) What is an immutable object? How do you create an Immutable object in Java? (answer)
+Immutable objects are those whose state cannot be changed once created. Any modification will result in a new object e.g. String, Integer, and other wrapper class. Please see the answer for step by step guide to creating Immutable class in Java.
+
+
+16) Can we create an Immutable object, which contains a mutable object?
+Yes, its possible to create an Immutable object which may contain a mutable object, you just need to be a little bit careful not to share the reference of the mutable component, instead, you should return a copy of it if you have to. Most common example is an Object which contain the reference of java.util.Date object.
+
+
+
+Date types and Basic Java Interview Questions
+
+17) What is the right data type to represent a price in Java? (answer)
+BigDecimal if memory is not a concern and Performance is not critical, otherwise double with predefined precision.
+
+
+18) How do you convert bytes to String? (answer)
+you can convert bytes to the string using string constructor which accepts byte[], just make sure that right character encoding otherwise platform's default character encoding will be used which may or may not be same.
+
+
+19) How do you convert bytes to long in Java? (answer)
+This questions if for you to answer :-)
+
+
+20) Can we cast an int value into byte variable? what will happen if the value of int is larger than byte?
+Yes, we can cast but int is 32 bit long in java while byte is 8 bit long in java so when you cast an int to byte higher 24 bits are lost and a byte can only hold a value from -128 to 128.
+
+
+21) There are two classes B extends A and C extends B, Can we cast B into C e.g. C = (C) B; (answer)
+
+
+22) Which class contains clone method? Cloneable or Object? (answer)
+java.lang.Cloneable is marker interface and doesn't contain any method clone method is defined in the object class. It is also knowing that clone() is a native method means it's implemented in C or C++ or any other native language.
+
+
+23) Is ++ operator is thread-safe in Java? (answer)
+ No it's not a thread safe operator because its involve multiple instructions like reading a value, incriminating it and storing it back into memory which can be overlapped between multiple threads.
+
+
+24) Difference between a = a + b and a += b ? (answer)
+The += operator implicitly cast the result of addition into the type of variable used to hold the result. When you add two integral variable e.g. variable of type byte, short, or int then they are first promoted to int and them addition happens. If result of addition is more than maximum value of a then a + b will give compile time error but a += b will be ok as shown below
+byte a = 127;
+byte b = 127;
+b = a + b; // error : cannot convert from int to byte
+b += a; // ok
+
+
+25) Can I store a double value in a long variable without casting? (answer)
+No, you cannot store a double value into a long variable without casting because the range of double is more  that long and you we need to type cast. It's not dificult to answer this question but many develoepr get it wrong due to confusion on which one is bigger between double and long in Java.
+
+
+26) What will this return 3*0.1 == 0.3? true or false? (answer)
+This is one of the really tricky questions. Out of 100, only 5 developers answered this question and only of them have explained the concept correctly. The short answer is false because some floating point numbers can not be represented exactly.
+
+
+27) Which one will take more memory, an int or Integer? (answer)
+An Integer object will take more memory an Integer is the an object and it  store meta data overhead about the object and int is primitive type so its takes less space.
+
+
+28) Why is String Immutable in Java? (answer)
+One of my favorite Java interview question. The String is Immutable in java because java designer thought that string will be heavily used and making it immutable allow some optimization easy sharing same String object between multiple clients. See the link for the more detailed answer. This is a great question for Java programmers with less experience as it gives them food for thought, to think about how things works in Java, what Jave designers might have thought when they created String class etc.
+
+29) Can we use String in the switch case? (answer)
+Yes from Java 7 onward we can use String in switch case but it is just syntactic sugar. Internally string hash code is used for the switch. See the detaiedl answer for more explanation and discussion.
+
+30) What is constructor chaining in Java? (answer)
+When you call one constructor from other than it's known as constructor chaining in Java. This happens when you have multiple, overloaded constructor in the class.
+
+
+
+JVM Internals and Garbage Collection Interview Questions
+In the year 2018 I have seen increased focus on JVM internal and Garbage collection tuning, monitoring Java appliation, dealing with Java performance issues on various Java interviews. This is actually become the prime topic for interviewing any experienced Java developer for senior position e.g. technical lead, VP or team lead. If you feel you are short of experience and knowledge in this area then you should read atleast one book mentioned in my list of Java Performance books. I vote goes to Java Performance, The Definitive guide by Scott.
+
+31) What is the size of int in 64-bit JVM?
+The size of an int variable is constant in Java, it's always 32-bit irrespective of platform. Which means the size of primitive int is same in both 32-bit and 64-bit Java virtual machine.
+
+32) The difference between Serial and Parallel Garbage Collector? (answer)
+Even though both the serial and parallel collectors cause a stop-the-world pause during Garbage collection. The main difference between them is that a serial collector is a default copying collector which uses only one GC thread for garbage collection while a parallel collector uses multiple GC threads for garbage collection.
+
+33) What is the size of an int variable in 32-bit and 64-bit JVM? (answer)
+The size of int is same in both 32-bit and 64-bit JVM, it's always 32 bits or 4 bytes.
+
+34) A difference between WeakReference and SoftReference in Java? (answer)
+Though both WeakReference and SoftReference helps garbage collector and memory efficient, WeakReference becomes eligible for garbage collection as soon as last strong reference is lost but SoftReference even thought it can not prevent GC, it can delay it until JVM absolutely need memory.
+
+35) How do WeakHashMap works? (answer)
+WeakHashMap works like a normal HashMap but uses WeakReference for keys, which means if the key object doesn't have any reference then both key/value mapping will become eligible for garbage collection.
+
+36) What is -XX:+UseCompressedOops JVM option? Why use it? (answer)
+When you go migrate your Java application from 32-bit to 64-bit JVM, the heap requirement suddenly increases, almost double, due to increasing size of ordinary object pointer from 32 bit to 64 bit. This also adversely affect how much data you can keep in CPU cache, which is much smaller than memory. Since main motivation for moving to 64-bit JVM is to specify large heap size, you can save some memory by using compressed OOP. By using -XX:+UseCompressedOops, JVM uses 32-bit OOP instead of 64-bit OOP.
+
+
+37) How do you find if JVM is 32-bit or 64-bit from Java Program? (answer)
+You can find that by checking some system properties like sun.arch.data.model or os.arch
+
+
+38) What is the maximum heap size of 32-bit and 64-bit JVM? (answer)
+Theoretically, the maximum heap memory you can assign to a 32-bit JVM is 2^32 which is 4GB but practically the limit is much smaller. It also varies between operating systems e.g. form 1.5GB in Windows to almost 3GB in Solaris. 64-bit JVM allows you to specify larger heap size, theoretically 2^64 which is quite large but practically you can specify heap space up to 100GBs. There are even JVM e.g. Azul where heap space of 1000 gigs is also possible.
+
+
+39) What is the difference between JRE, JDK, JVM and JIT? (answer)
+JRE stands for Java run-time and it's required to run Java application. JDK stands for Java development kit and provides tools to develop Java program e.g. Java compiler. It also contains JRE. The JVM stands for Java virtual machine and it's the process responsible for running Java application. The JIT stands for Just In Time compilation and helps to boost the performance of Java application by converting Java byte code into native code when the crossed certain threshold i.e. mainly hot code is converted into native code.
+
+Java Interview Questions for 3 years experience 
+
+
+40) Explain Java Heap space and Garbage collection? (answer)
+When a Java process is started using java command, memory is allocated to it. Part of this memory is used to create heap space, which is used to allocate memory to objects whenever they are created in the program. Garbage collection is the process inside JVM which reclaims memory from dead objects for future allocation.
+
+JVM Internals Java Interview Questions Answers
+
+
+41) Can you guarantee the garbage collection process? (answer)
+No, you cannot guarantee the garbage collection, though you can make a request using System.gc() or Runtime.gc() method.
+
+
+42) How do you find memory usage from Java program? How much percent of the heap is used?
+You can use memory related methods from java.lang.Runtime class to get the free memory, total memory and maximum heap memory in Java.  By using these methods, you can find out how many percents of the heap is used and how much heap space is remaining. Runtime.freeMemory() return amount of free memory in bytes, Runtime.totalMemory() returns total memory in bytes and Runtime.maxMemory() returns maximum memory in bytes.
+
+
+43) What is the difference between stack and heap in Java? (answer)
+Stack and heap are different memory areas in the JVM and they are used for different purposes. The stack is used to hold method frames and local variables while objects are always allocated memory from the heap. The stack is usually much smaller than heap memory and also didn't shared between multiple threads, but heap is shared among all threads in JVM.
+
+
+Basic Java concepts Interview Questions
+44) What's the difference between "a == b" and "a.equals(b)"? (answer)
+The a = b does object reference matching if both a and b are an object and only return true if both are pointing to the same object in the heap space, on the other hand, a.equals(b) is used for logical mapping and its expected from an object to override this method to provide logical equality. For example, String class overrides this equals() method so that you can compare two Strings, which are the different object but contains same letters.
+
+
+45) What is a.hashCode() used for? How is it related to a.equals(b)? (answer)
+hashCode() method returns an int hash value corresponding to an object. It's used in hash based collection classes e.g Hashtable, HashMap, LinkedHashMap and so on. It's very tightly related to equals() method. According to Java specification, two objects which are equal to each other using equals() method must have same hash code.
+
+
+46) Difference between final, finalize and finally? (answer)
+The final is a modifier which you can apply to variable, methods and classes. If you make a variable final it means its value cannot be changed once initialized. finalize is a method, which is called just before an object is a garbage collected, giving it last chance to resurrect itself, but the call to finalize is not guaranteed. finally is a keyword which is used in exception handling along with try and catch. the finally block is always executed irrespective of whether an exception is thrown from try block or not.
+
+
+47) What is a compile time constant in Java? What is the risk of using it?
+public static final variables are also known as a compile time constant, the public is optional there. They are replaced with actual values at compile time because compiler know their value up-front and also knows that it cannot be changed during run-time. One of the problem with this is that if you happened to use a public static final variable from some in-house or third party library and their value changed later than your client will still be using old value even after you deploy a new version of JARs. To avoid that, make sure you compile your program when you upgrade dependency JAR files.
+
+
+Java Collections Framework Interview Questions
+It also contains Data structure and algorithm Interview question in Java, questions on array, linked list, HashMap, ArrayList, Hashtable, Stack, Queue, PriorityQueue, LinkedHashMap and ConcurrentHashMap.
+
+48) The difference between List, Set, Map, and Queue in Java? (answer)
+The list is an ordered collection which allows duplicate. It also has an implementation which provides constant time index based access, but that is not guaranteed by List interface. Set is unordered collection which
+
+
+49) Difference between poll() and remove() method?
+Both poll() and remove() take out the object from the Queue but if poll() fails then it returns null but if remove fails it throws Exception.
+
+
+50) The difference between LinkedHashMap and PriorityQueue in Java? (answer)
+PriorityQueue guarantees that lowest or highest priority element always remain at the head of the queue, but LinkedHashMap maintains the order on which elements are inserted. When you iterate over a PriorityQueue, iterator doesn't guarantee any order but iterator of LinkedHashMap does guarantee the order on which elements are inserted.
+
+
+51) Difference between ArrayList and LinkedList in Java? (answer)
+The obvious difference between them is that ArrrayList is backed by array data structure, supprots random access and LinkedList is backed by linked list data structure and doesn't supprot random access. Accessing an element with the index is O(1) in ArrayList but its O(n) in LinkedList. See the answer for more detailed discussion.
+
+
+52) What is a couple of ways that you could sort a collection? (answer)
+You can either use the Sorted collection like TreeSet or TreeMap or you can sort using the ordered collection like a list and using Collections.sort() method.
+
+
+53) How do you print Array in Java? (answer)
+You can print an array by using the Arrays.toString() and Arrays.deepToString() method. Since array doesn't implement toString() by itself, just passing an array to System.out.println() will not print its contents but Arrays.toString() will print each element.
+
+54) LinkedList in Java is doubly or singly linked list? (answer)
+It's a doubly linked list, you can check the code in JDK. In Eclipse, you can use the shortcut, Ctrl + T to directly open this class in Editor.
+
+55) Which kind of tree is used to implement TreeMap in Java? (answer)
+A Red Black tree is used to implement TreeMap in Java.
+
+
+56) What is the difference between Hashtable and HashMap? (answer)
+There are many differences between these two classes, some of them are following:
+a) Hashtable is a legacy class and present from JDK 1, HashMap was added later.
+b) Hashtable is synchronized and slower but HashMap is not synchronized and faster.
+c) Hashtable doesn't allow null keys but HashMap allows one null key.
+See the answer for more differences between HashMap and Hashtable in Java.
+
+
+57) How HashSet works internally in Java? (answer)
+HashSet is internally implemented using an HashMap. Since a Map needs key and value, a default value is used for all keys. Similar to HashMap, HashSet doesn't allow duplicate keys and only one null key, I mean you can only store one null object in HashSet.
+
+
+58) Write code to remove elements from ArrayList while iterating? (answer)
+ Key here is to check whether candidate uses ArrayList's remove() or Iterator's remove(). Here is the sample code which uses right way o remove elements from ArrayList while looping over and avoids ConcurrentModificationException.
+
+
+59) Can I write my own container class and use it in the for-each loop?
+Yes, you can write your own container class. You need to implement the Iterable interface if you want to loop over advanced for loop in Java, though. If you implement Collection then you by default get that property.
+
+
+60) What is default size of ArrayList and HashMap in Java? (answer)
+As of Java 7 now, default size of ArrayList is 10 and default capacity of HashMap is 16, it must be power of 2. Here is code snippet from ArrayList  and HashMap class :
+// from ArrayList.java JDK 1.7
+private static final int DEFAULT_CAPACITY = 10;  
+
+//from HashMap.java JDK 7
+static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // aka 16
+
+
+
+61) Is it possible for two unequal objects to have the same hashcode?
+Yes, two unequal objects can have same hashcode that's why collision happen in a hashmap.
+the equal hashcode contract only says that two equal objects must have the same hashcode it doesn't say anything about the unequal object.
+
+62) Can two equal object have the different hash code?
+No, thats not possible according to hash code contract.
+
+
+63) Can we use random numbers in the hashcode() method? (answer)
+No, because hashcode of an object should be always same. See the answer to learning more about things to remember while overriding hashCode() method in Java.
+
+
+64) What is the difference between Comparator and Comparable in Java? (answer)
+The Comparable interface is used to define the  natural order of object while Comparator is used to define custom order. Comparable can be always one, but we can have multiple comparators to define customized order for objects.
+
+65) Why you need to override hashcode, when you override equals in Java? (answer)
+ Because equals have code contract mandates to override equals and hashcode together .since many container class like HashMap or HashSet depends on hashcode and equals contract.
+
+
+
+Java IO and NIO Interview questions
+IO is very important from Java interview point of view. You should have a good knowledge of old Java IO, NIO, and NIO2 alsong with some operating system and disk IO fundamentals. Here are some frequently asked questions form Java IO.
+
+66) In my Java program, I have three sockets? How many threads I will need to handle that?
+
+67) How do you create ByteBuffer in Java?
+
+68) How do you write and read from ByteBuffer in Java?
+
+69) Is Java BIG endian or LITTLE endian?
+
+70) What is the byte order of ByteBuffer?
+
+71) The difference between direct buffer and non-direct buffer in Java? (answer)
+
+72) What is the memory mapped buffer in Java? (answer)
+
+73) What is TCP NO DELAY socket option?
+
+74) What is the difference between TCP and UDP protocol? (answer)
+
+75) The difference between ByteBuffer and StringBuffer in Java? (answer)
+
+
+
+76) What best practices you follow while writing multi-threaded code in Java? (answer)
+Here are couple of best practices which I follow while writing concurrent code in Java:
+a) Always name your thread, this will help in debugging.
+b) minimize the scope of synchronization, instead of making whole method synchronized, only critical section should be synchronized.
+c) prefer volatile over synchronized if you can can.
+e) use higher level concurrency utilities instead of waitn() and notify for inter thread communication e.g. BlockingQueue, CountDownLatch and Semeaphore.
+e) Prefer concurrent collection over synchronized collection in Java. They provide better scalability.
+
+
+77) Tell me few best practices you apply while using Collections in Java? (answer)
+Here are couple of best practices I follow while using Collectionc classes from Java:
+a) Always use the right collection e.g. if you need non-synchronized list then use ArrayList and not Vector.
+b) Prefer concurrent collection over synchronized collection because they are more scalable.
+c) Always use interface to a represent and access a collection e.g. use List to store ArrayList, Map to store HashMap and so on.
+d) Use iterator to loop over collection.
+e) Always use generics with collection.
+
+
+78) Can you tell us at least 5 best practice you use while using threads in Java? (answer)
+This is similar to the previous question and you can use the answer given there. Particularly with thread, you should:
+a) name your thread
+b) keep your task and thread separate, use Runnable or Callable with thread pool executor.
+c) use thread pool
+d) use volatile to indicate compiler about ordering, visibility, and atomicity.
+e) avoid thread local variable because incorrect use of ThreadLocal class in Java can create a memory leak.
+Look there are many best practices and I give extra points to the developer which bring something new, something even I don't know. I make sure to ask this question to Java developers of 8 to 10 years of experience just to gauge his hands on experience and knowledge.
+
+
+79) Name 5 IO best practices? (answer)
+IO is very important for performance of your Java application. Ideally you should avoid IO in critical path of your application. Here are couple of Java IO best practices you can follow:
+a) Use buffered IO classes instead of reading individual bytes and char.
+b) Use classes from NIO and NIO2
+c) Always close streams in finally block or use try-with-resource statements.
+d) use memory mapped file for faster IO.
+If a Java candidate doesn't know about IO and NIO, especially if he has at least 2 to 4 years of experience, he needs some reading.
+
+
+80) Name 5 JDBC best practices your follow? (answer)
+Another good Java best practices for experienced Java developer of 7 to 8 years experience. Why it's important? because they are the ones which set the trend in the code and educate junior developers. There are many best practices and you can name as per your confort and conviniece. Here are some of the more common ones:
+a) use batch statement for inserting and updating data.
+b) use PreparedStatement to avoid SQL exception and better performance.
+c) use database connection pool
+d) access resultset using column name instead of column indexes.
+e) Don't generate dynamic SQL by concatenating String with user input.
+
+
+81) Name couple of method overloading best practices in Java? (answer)
+Here are some best practices you can follow while overloading a method in Java to avoid confusion with auto-boxing:
+a) Don't overload method where one accepts int and other accepts Integer.
+b) Don't overload method where number of argument is same and only order of argument is different.
+c) Use varargs after overloaded methods has more than 5 arguments.
+
+
+
+Date, Time and Calendar Interview questions in Java
+
+82) Does SimpleDateFormat is safe to use in the multi-threaded program? (answer)
+No, unfortunately, DateFormat and all its implementations including SimpleDateFormat is not thread-safe, hence should not be used in the multi-threaded program until external thread-safety measures are applied e.g. confining SimpleDateFormat object into a ThreadLocal variable. If you don't do that, you will get an incorrect result while parsing or formatting dates in Java. Though, for all practical date time purpose, I highly recommend joda-time library.
+
+
+83) How do you format a date in Java? e.g. in the ddMMyyyy format? (answer)
+You can either use SimpleDateFormat class or joda-time library to format date in Java. DateFormat class allows you to format date on many popular formats. Please see the answer for code samples to format date into different formats e.g. dd-MM-yyyy or ddMMyyyy.
+
+
+84) How do you show timezone in formatted date in Java? (answer)
+
+85) The difference between java.util.Date and java.sql.Date in Java? (answer)
+
+86) How to you calculate the difference between two dates in Java? (program)
+
+87) How do you convert a String(YYYYMMDD) to date in Java? (answer)
+
+
+
+
+Unit testing JUnit Interview questions
+89) How do you test static method? (answer)
+You can use PowerMock library to test static methods in Java.
+
+90) How to do you test a method for an exception using JUnit? (answer)
+
+91) Which unit testing libraries you have used for testing Java programs? (answer)
+
+92) What is the difference between @Before and @BeforeClass annotation? (answer)
+
+
+
+Programming and Coding Questions
+93) How to check if a String contains only numeric digits? (solution)
+
+94) How to write LRU cache in Java using Generics? (answer)
+
+95) Write a Java program to convert bytes to long? (answer)
+
+96) How to reverse a String in Java without using StringBuffer? (solution)
+
+97) How to find the word with the highest frequency from a file in Java? (solution)
+
+98) How do you check if two given String are anagrams? (solution)
+
+99) How to print all permutation of a String in Java? (solution)
+
+100) How do you print duplicate elements from an array in Java? (solution)
+
+101) How to convert String to int in Java? (solution)
+
+102) How to swap two integers without using temp variable? (solution)
+
+
+
+Java Interview questions from OOP and Design Patterns
+It contains Java Interview questions from SOLID design principles, OOP fundamentals e.g. class, object, interface, Inheritance, Polymorphism, Encapsulation, and Abstraction as well as more advanced concepts like Composition, Aggregation, and Association. It also contains questions from GOF design patterns.
+
+103) What is the interface? Why you use it if you cannot write anything concrete on it?
+The interface is used to define API. It tells about the contract your classes will follow. It also supports abstraction because a client can use interface method to leverage multiple implementations e.g. by using List interface you can take advantage of random access of ArrayList as well as flexible insertion and deletion of LinkedList. The interface doesn't allow you to write code to keep things abstract but from Java 8 you can declare static and default methods inside interface which are concrete.
+
+
+104) The difference between abstract class and interface in Java? (answer)
+There are multiple differences between abstract class and interface in Java, but the most important one is Java's restriction on allowing a class to extend just one class but allows it to implement multiple interfaces. An abstract class is good to define default behavior for a family of class, but the interface is good to define Type which is later used to leverage Polymorphism. Please check the answer for a more thorough discussion of this question.
+
+
+105) Which design pattern have you used in your production code? apart from Singleton?
+This is something you can answer from your experience. You can generally say about dependency injection, factory pattern, decorator pattern or observer pattern, whichever you have used. Though be prepared to answer follow-up question based upon the pattern you choose.
+
+
+106) Can you explain Liskov Substitution principle? (answer)
+This is one of the toughest questions I have asked in Java interviews. Out of 50 candidates, I have almost asked only 5 have managed to answer it. I am not posting an answer to this question as I like you to do some research, practice and spend some time to understand this confusing principle well.
+
+
+107) What is Law of Demeter violation? Why it matters? (answer)
+Believe it or not, Java is all about application programming and structuring code. If  you have good knowledge of common coding best practices, patterns and what not to do than only you can write quality code.  Law of Demeter suggests you "talk to friends and not stranger", hence used to reduce coupling between classes.
+
+
+108) What is Adapter pattern? When to use it?
+Another frequently asked Java design pattern questions. It provides interface conversion. If your client is using some interface but you have something else, you can write an Adapter to bridge them together. This is good for Java software engineer having 2 to 3 years experience because the question is neither difficult nor tricky but requires knowledge of OOP design patterns.
+
+
+109) What is "dependency injection" and "inversion of control"? Why would someone use it? (answer)
+
+110) What is an abstract class? How is it different from an interface? Why would you use it? (answer)
+One more classic question from Programming Job interviews, it is as old as chuck Norris. An abstract class is a class which can have state, code and implementation, but an interface is a contract which is totally abstract. Since I have answered it many times, I am only giving you the gist here but you should read the article linked to answer to learn this useful concept in much more detail.
+
+
+111) Which one is better constructor injection or setter dependency injection? (answer)
+Each has their own advantage and disadvantage. Constructor injection guaranteed that class will be initialized with all its dependency, but setter injection provides flexibility to set an optional dependency. Setter injection is also more readable if you are using an XML file to describe dependency. Rule of thumb is to use constructor injection for mandatory dependency and use setter injection for optional dependency.
+
+
+112) What is difference between dependency injection and factory design pattern? (answer)
+Though both patterns help to take out object creation part from application logic, use of dependency injection results in cleaner code than factory pattern. By using dependency injection, your classes are nothing but POJO which only knows about dependency but doesn't care how they are acquired. In the case of factory pattern, the class also needs to know about factory to acquire dependency. hence, DI results in more testable classes than factory pattern. Please see the answer for a more detailed discussion on this topic.
+
+
+113) Difference between Adapter and Decorator pattern? (answer)
+Though the structure of Adapter and Decorator pattern is similar, the difference comes on the intent of each pattern. The adapter pattern is used to bridge the gap between two interfaces, but Decorator pattern is used to add new functionality into the class without the modifying existing code.
+
+
+114) Difference between Adapter and Proxy Pattern? (answer)
+Similar to the previous question, the difference between Adapter and Proxy patterns is in their intent. Since both Adapter and Proxy pattern encapsulate the class which actually does the job, hence result in the same structure, but Adapter pattern is used for interface conversion while the Proxy pattern is used to add an extra level of indirection to support distribute, controlled or intelligent access.
+
+
+115) What is Template method pattern? (answer)
+Template pattern provides an outline of an algorithm and lets you configure or customize its steps. For examples, you can view a sorting algorithm as a template to sort object. It defines steps for sorting but let you configure how to compare them using Comparable or something similar in another language. The method which outlines the algorithms is also known as template method.
+
+
+116) When do you use Visitor design pattern? (answer)
+The visitor pattern is a solution of problem where you need to add operation on a class hierarchy but without touching them. This pattern uses double dispatch to add another level of indirection.
+
+
+117) When do you use Composite design pattern? (answer)
+Composite design pattern arranges objects into tree structures to represent part-whole hierarchies. It allows clients treat individual objects and container of objects uniformly. Use Composite pattern when you want to represent part-whole hierarchies of objects.
+
+
+118) The difference between Inheritance and Composition? (answer)
+Though both allows code reuse, Composition is more flexible than Inheritance because it allows you to switch to another implementation at run-time. Code written using Composition is also easier to test than code involving inheritance hierarchies.
+
+
+119) Describe overloading and overriding in Java? (answer)
+Both overloading and overriding allow you to write two methods of different functionality but with the same name, but overloading is compile time activity while overriding is run-time activity. Though you can overload a method in the same class, but you can only override a method in child classes. Inheritance is necessary for overriding.
+
+
+120) The difference between nested public static class and a top level class in Java? (answer)
+You can have more than one nested public static class inside one class, but you can only have one top-level public class in a Java source file and its name must be same as the name of Java source file.
+
+
+121) Difference between Composition, Aggregation and Association in OOP? (answer)
+If two objects are related to each other, they are said to be associated with each other. Composition and Aggregation are two forms of association in object-oriented programming. The composition is stronger association than Aggregation. In Composition, one object is OWNER of another object while in Aggregation one object is just USER of another object. If an object A is composed of object B then B doesn't exist if A ceased to exists, but if object A is just an aggregation of object B then B can exists even if A ceased to exist.
+
+
+122) Give me an example of design pattern which is based upon open closed principle? (answer)
+This is one of the practical questions I ask experienced Java programmer. I expect them to know about OOP design principles as well as patterns. Open closed design principle asserts that your code should be open for extension but closed for modification. Which means if you want to add new functionality, you can add it easily using the new code but without touching already tried and tested code.  There are several design patterns which are based upon open closed design principle e.g. Strategy pattern if you need a new strategy, just implement the interface and configure, no need to modify core logic. One working example is Collections.sort() method which is based on Strategy pattern and follows the open-closed principle, you don't modify sort() method to sort a new object, what you do is just implement Comparator in your own way.
+
+
+123) Difference between Abstract factory and Prototype design pattern? (answer)
+This is the practice question for you, If you are feeling bored just reading and itching to write something, why not write the answer to this question. I would love to see an example the, which should answer where you should use the Abstract factory pattern and where is the Prototype pattern is more suitable.
+
+
+124) When do you use Flyweight pattern? (answer)
+This is another popular question from the design pattern. Many Java developers with 4 to 6 years of experience know the definition but failed to give any concrete example. Since many of you might not have used this pattern, it's better to look examples from JDK. You are more likely have used them before and they are easy to remember as well. Now let's see the answer.
+Flyweight pattern allows you to share object to support large numbers without actually creating too many objects. In order to use Flyweight pattern, you need to make your object Immutable so that they can be safely shared. String pool and pool of Integer and Long object in JDK are good examples of Flyweight pattern.
+
+
+
+Miscellaneous Java Interview Questions
+It contains XML Processing in Java Interview question, JDBC Interview question, Regular expressions Interview questions, Java Error and Exception Interview Questions, Serialization,
+
+125) The difference between nested static class and top level class? (answer)
+One of the fundamental questions from Java basics. I ask this question only to junior Java developers of 1 to 2 years of experience as it's too easy for an experience Java programmers. The answer is simple, a public top level class must have the same name as the name of the source file, there is no such requirement for nested static class. A nested class is always inside a top level class and you need to use the name of the top-level class to refer nested static class e.g. HashMap.Entry is a nested static class, where HashMap is a top level class and Entry is nested static class.
+
+
+126) Can you write a regular expression to check if String is a number? (solution)
+If you are taking Java interviews then you should ask at least one question on the regular expression. This clearly differentiates an average programmer with a good programmer. Since one of the traits of a good developer is to know tools, regex is the best tool for searching something in the log file, preparing reports etc. Anyway, answer to this question is, a numeric String can only contain digits i.e. 0 to 9 and + and - sign that too at start of the String, by using this information you can write following regular expression to check if given String is number or not
+
+
+127) The difference between checked and unchecked Exception in Java? (answer)
+checked exception is checked by the compiler at compile time. It's mandatory for a method to either handle the checked exception or declare them in their throws clause. These are the ones which are a sub class of Exception but doesn't descend from RuntimeException. The unchecked exception is the descendant of RuntimeException and not checked by the compiler at compile time. This question is now becoming less popular and you would only find this with interviews with small companies, both investment banks and startups are moved on from this question.
+
+
+128) The difference between throw and throws in Java? (answer)
+the throw is used to actually throw an instance of java.lang.Throwable class, which means you can throw both Error and Exception using throw keyword e.g.
+
+throw new IllegalArgumentException("size must be multiple of 2")
+
+On the other hand, throws is used as part of method declaration and signals which kind of exceptions are thrown by this method so that its caller can handle them. It's mandatory to declare any unhandled checked exception in throws clause in Java. Like the previous question, this is another frequently asked Java interview question from errors and exception topic but too easy to answer.
+
+
+129) The difference between Serializable and Externalizable in Java? (answer)
+This is one of the frequently asked questions from Java Serialization. The interviewer has been asking this question since the day Serialization was introduced in Java, but yet only a few good candidate can answer this question with some confidence and practical knowledge. Serializable interface is used to make Java classes serializable so that they can be transferred over network or their state can be saved on disk, but it leverages default serialization built-in JVM, which is expensive, fragile and not secure. Externalizable allows you to fully control the Serialization process, specify a custom binary format and add more security measure.
+
+
+130) The difference between DOM and SAX parser in Java? (answer)
+Another common Java question but from XML parsing topic. It's rather simple to answer and that's why many interviewers prefers to ask this question on the telephonic round. DOM parser loads the whole XML into memory to create a tree based DOM model which helps it quickly locate nodes and make a change in the structure of XML while SAX parser is an event based parser and doesn't load the whole XML into memory. Due to this reason DOM is faster than SAX but require more memory and not suitable to parse large XML files.
+
+
+131) Tell me 3 features introduced on JDK 1.7? (answer)
+This is one of the good questions I ask to check whether the candidate is aware of recent development in Java technology space or not. Even though JDK 7 was not a big bang release like JDK 5 or JDK 8, it still has a lot of good feature to count on e.g. try-with-resource statements, which free you from closing streams and resources when you are done with that, Java automatically closes that. Fork-Join pool to implement something like the Map-reduce pattern in Java. Allowing String variable and literal into switch statements. Diamond operator for improved type inference, no need to declare generic type on the right-hand side of variable declaration anymore, results in more readable and succinct code. Another worth noting feature introduced was improved exception handling e.g. allowing you to catch multiple exceptions in the same catch block.
+
+
+132) Tell me 5 features introduced in JDK 1.8? (answer)
+This is the follow-up question of the previous one. Java 8 is path breaking release in Java's history, here are the top 5 features from JDK 8 release
+Lambda expression, which allows you pass an anonymous function as object.
+Stream API, take advantage of multiple cores of modern CPU and allows you to write succinct code.
+Date and Time API, finally you have a solid and easy to use date and time library right into JDK
+Extension methods, now you can have static and default method into your interface
+Repeated annotation, allows you apply the same annotation multiple times on a type
+
+133) What is the difference between Maven and ANT in Java? (answer)
+Another great question to check the all round knowledge of Java developers. It's easy to answer questions from core Java but when you ask about setting things up, building Java artifacts, many Java software engineer struggles. Coming back to the answer of this question, Though both are build tool and used to create Java application build, Maven is much more than that. It provides standard structure for Java project based upon "convention over configuration" concept and automatically manage dependencies (JAR files on which your application is dependent) for Java application. Please see the answer for more differences between Maven and ANT tool.
