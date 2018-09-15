@@ -1,0 +1,474 @@
+1.how to fetch the last row from a web table?
+Ans:WebElement lastRow =  driver.findElement(By.xpath("(//table[1]/tbody/tr)[last()]"));
+
+2.how to call a function of a class without creating an object?
+ANS:by making it static
+class A{
+    static String z(){
+        System.out.println("a");
+        return "sauarbh";
+    }
+}
+class B{
+    A a;
+    A x(){
+    return a;   
+    }
+}
+public class runner {
+    public static void main(String[] args) {
+         B b = new B();
+         b.x();
+         A.z();
+    }
+}
+
+3.public class Dulicate {
+	static void getCharCount(String input) {
+		HashMap<Character, Integer> Charcount = new HashMap<>();
+		char[] ch = input.toCharArray();
+		for (Character c : ch) {
+			if (Charcount.containsKey(c)) {
+				Charcount.put(c, Charcount.get(c) + 1);
+			} else {
+				Charcount.put(c, 1);
+			}
+		}
+	
+		//System.out.println(Charcount);
+	Set<Character> keys = Charcount.keySet();
+	for(Character ph:keys) {
+		if(Charcount.get(ph)>1)
+		{
+			System.out.println(ph +":"+Charcount.get(ph));
+		}
+	}
+
+	}
+
+4.public class CharCount {
+	static void getCharCount(String input) {
+		HashMap<Character, Integer> Charcount = new HashMap<>();
+		char[] ch = input.toCharArray();
+		for (Character c : ch) {
+			if (Charcount.containsKey(c)) {
+				Charcount.put(c, Charcount.get(c) + 1);
+			} else {
+				Charcount.put(c, 1);
+			}
+		}
+		System.out.println(Charcount);
+	}
+
+	public static void main(String[] args) {
+		getCharCount("malayalam");
+
+	}
+
+}
+
+5.public static void main(String[] args) {
+		int sum = 10;
+		int i;
+		int j;
+		for (i = 1; i <= sum; i++) {
+			for (j = 1; j <= sum; j++) {
+				if ((i + j) > sum) {
+					System.out.print("*");
+					System.out.print(" ");
+				} else {
+					System.out.print(" ");
+				}
+
+			}
+			System.out.println();
+		}
+
+	}
+
+}
+
+6.public class EXTRACTNUMBERFROMSTRING {
+
+	public static void main(String[] args) {
+		int sum = 0;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter the alphanumeric string");
+		String input = sc.nextLine();
+		boolean alpha = input.matches("([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*");
+		if (alpha == true) {
+			for (int i = 0; i < input.length(); i++) {
+				char c = input.charAt(i);
+				if (Character.isDigit(c))
+					sum = sum + Character.getNumericValue(c);
+			}
+			System.out.println("Sum of numbers found in " + input + " : " + sum);
+		} else
+			System.out.println(input + " is not an alphanumeric.");
+	}
+}
+
+7.public class Fibanacci {
+     
+	public static void main(String[] args) {
+		ArrayList<Integer> FibonacciSeries=new ArrayList<>();
+		FibonacciSeries.add(0);
+		FibonacciSeries.add(1);
+		Scanner sc=new Scanner(System.in);
+		System.out.println("please enter the length : ");
+		int length = sc.nextInt();
+		sc.close();
+        if(length<=0) 
+        	System.out.println("the length is invalid");
+        	else if(length==1)
+        System.out.println(FibonacciSeries.get(0));
+          	else if(length==2)
+                System.out.println(FibonacciSeries);
+          	else {
+          		for(int i=3;i<=length;i++) {
+          			FibonacciSeries.add(FibonacciSeries.get(i-2)+FibonacciSeries.get(i-3));
+          	}
+                System.out.println(FibonacciSeries);
+          	}
+
+	}
+
+8.public class FloydTriangle {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the numbers");
+		int r = sc.nextInt();
+		int k = 1;
+		for (int i = 1; i <= r; i++) {
+			for (int j = 1; j <= i; j++) {
+				System.out.print(k++ + "");
+			}
+			System.out.println();
+		}
+
+	}
+
+}
+
+9.public class Palindrome {
+
+	public static void main(String[] args) {
+		String original,reverse="";
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number/String to check for palindrome");
+		original=sc.nextLine();
+		int length1=original.length();
+		for(int i=length1-1;i>=0;i--) 
+			reverse=reverse+original.charAt(i);
+			if(original.equals(reverse)) 
+				System.out.println("entered String/number is palindrome");
+				else 
+					System.out.println("entered String/number is not palindrome");
+			}
+		}
+	
+10.public class Reverseword {
+	public static String[] getsplit(String inputsplit) {
+		return inputsplit.split(" ");
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter the string to be reversed");
+		String userip = sc.nextLine();
+		sc.close();
+		String[] sliptget = getsplit(userip);
+		String desiredword = "";
+		for (int j = sliptget.length - 1; j >= 0; j--) {
+			desiredword = desiredword + sliptget[j] + " ";
+		}
+		System.out.println(desiredword);
+	}
+}
+
+11.public class ReversingOfEachWord {
+public static String[] getsplit(String inputsplit) {
+	return inputsplit.split(" ");
+}
+public static String reverseword(String reverseword) {
+	String reverse="";
+	for(int i=reverseword.length()-1;i>=0;i--) {
+		reverse=reverse+reverseword.charAt(i);
+	}
+	return reverse;
+}
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the string to be reversed");
+		String userip = sc.nextLine();
+		String[] sliptget = getsplit(userip);
+		String desiredword="";
+		for(int j=0;j<sliptget.length;j++) {
+			desiredword=desiredword+reverseword(sliptget[j])+" ";
+		}
+		System.out.println(desiredword);
+	}
+
+}
+
+12.public class Swap {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number before swap");
+        int x=sc.nextInt(); 
+    	System.out.println("Enter the 2nd number before swap");
+        int y=sc.nextInt(); 
+        System.out.println("before swap :" +x);
+        System.out.println("before swap :" +y);
+        x=x+y;
+        y=x-y;
+        x=x-y;
+        System.out.println("after swap :" +x);
+        System.out.println("after swap :" +y);
+	}
+
+}
+
+3.how to find invisible elements in a web page write sample code?
+ANS:JavascriptExecutor js = (JavascriptExecutor)driver;
+js.executeScript("arguments[0].click();", element);
+
+4.how to switch to multiple windows?
+ANS:public class MultipleWindowsClass{
+ @Test
+ public void testMultipleWindows() throws InterruptedException{
+ System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\test\\java\\drivers\\geckodriver.exe");
+ // To open browser
+ WebDriver driver=new FirefoxDriver();
+ // To maximize browser
+ driver.manage().window().maximize();
+ // To open Naukri website with multiple windows
+ driver.get("http://www.naukri.com/");
+ // It will return the parent window name as a String
+ String mainWindow=driver.getWindowHandle();
+ // It returns no. of windows opened by WebDriver and will return Set of Strings
+ Set<String> set =driver.getWindowHandles();
+ // Using Iterator to iterate with in windows
+ Iterator<String> itr= set.iterator();
+ while(itr.hasNext()){
+ String childWindow=itr.next();
+    // Compare whether the main windows is not equal to child window. If not equal, we will close.
+ if(!mainWindow.equals(childWindow)){
+ driver.switchTo().window(childWindow);
+ System.out.println(driver.switchTo().window(childWindow).getTitle());
+ driver.close();
+ }
+ }
+ // This is to switch to the main window
+ driver.switchTo().window(mainWindow);
+ }
+}
+
+5.
+ANS:1)Create your Script to test a LogIn application using TestNG class.
+
+2) Pass ‘Browser Type’ as parameters using TestNG annotations to the before method of the TestNG class. This method will launch only the browser, which will be provided as parameter.
+
+public class MultiBrowser {
+
+	public WebDriver driver;
+
+  @Parameters("browser")
+
+  @BeforeClass
+
+  // Passing Browser parameter from TestNG xml
+
+  public void beforeTest(String browser) {
+
+  // If the browser is Firefox, then do this
+
+  if(browser.equalsIgnoreCase("firefox")) {
+
+	  driver = new FirefoxDriver();
+
+  // If browser is IE, then do this	  
+
+  }else if (browser.equalsIgnoreCase("ie")) { 
+
+	  // Here I am setting up the path for my IEDriver
+
+	  System.setProperty("webdriver.ie.driver", "D:\ToolsQA\OnlineStore\drivers\IEDriverServer.exe");
+
+	  driver = new InternetExplorerDriver();
+
+  } 
+
+  // Doesn't the browser type, lauch the Website
+
+  driver.get("http://www.store.demoqa.com"); 
+
+  }
+
+  // Once Before method is completed, Test method will start
+
+  @Test public void login() throws InterruptedException {
+
+	driver.findElement(By.xpath(".//*[@id='account']/a")).click();
+
+    driver.findElement(By.id("log")).sendKeys("testuser_1");
+
+    driver.findElement(By.id("pwd")).sendKeys("Test@123");
+
+    driver.findElement(By.id("login")).click();
+
+	}  
+
+  @AfterClass public void afterTest() {
+
+		driver.quit();
+
+	}
+
+}
+
+package automationFramework;
+ 
+import org.openqa.selenium.By;
+ 
+import org.openqa.selenium.WebDriver;
+ 
+import org.openqa.selenium.firefox.FirefoxDriver;
+ 
+import org.openqa.selenium.ie.InternetExplorerDriver;
+ 
+import org.testng.annotations.AfterClass;
+ 
+import org.testng.annotations.BeforeClass;
+ 
+import org.testng.annotations.Parameters;
+ 
+import org.testng.annotations.Test;
+ 
+public class MultiBrowser {
+ 
+	public WebDriver driver;
+ 
+  @Parameters("browser")
+ 
+  @BeforeClass
+ 
+  // Passing Browser parameter from TestNG xml
+ 
+  public void beforeTest(String browser) {
+ 
+  // If the browser is Firefox, then do this
+ 
+  if(browser.equalsIgnoreCase("firefox")) {
+ 
+	  driver = new FirefoxDriver();
+ 
+  // If browser is IE, then do this	  
+ 
+  }else if (browser.equalsIgnoreCase("ie")) { 
+ 
+	  // Here I am setting up the path for my IEDriver
+ 
+	  System.setProperty("webdriver.ie.driver", "D:\ToolsQA\OnlineStore\drivers\IEDriverServer.exe");
+ 
+	  driver = new InternetExplorerDriver();
+ 
+  } 
+ 
+  // Doesn't the browser type, lauch the Website
+ 
+  driver.get("http://www.store.demoqa.com"); 
+ 
+  }
+ 
+  // Once Before method is completed, Test method will start
+ 
+  @Test public void login() throws InterruptedException {
+ 
+	driver.findElement(By.xpath(".//*[@id='account']/a")).click();
+ 
+    driver.findElement(By.id("log")).sendKeys("testuser_1");
+ 
+    driver.findElement(By.id("pwd")).sendKeys("Test@123");
+ 
+    driver.findElement(By.id("login")).click();
+ 
+	}  
+ 
+  @AfterClass public void afterTest() {
+ 
+		driver.quit();
+ 
+	}
+ 
+}
+ 
+
+3) Create a TestNG XML for running your test. Configure the TestNG XML for passing parameters i.e. to tell which browser should be used for Running the Test.
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite" parallel="none">
+
+ <test name="FirefoxTest">
+
+ <parameter name="browser" value="firefox" />
+
+ <classes>
+
+ <class name="automationFramework.MultiBrowser" />
+
+ </classes>
+
+ </test>
+
+ <test name="IETest">
+
+ <parameter name="browser" value="ie" />
+
+ <classes>
+
+ <class name="automationFramework.MultiBrowser" />
+
+ </classes>
+
+ </test>
+
+</suite>
+
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+ 
+<suite name="Suite" parallel="none">
+ 
+ <test name="FirefoxTest">
+ 
+ <parameter name="browser" value="firefox" />
+ 
+ <classes>
+ 
+ <class name="automationFramework.MultiBrowser" />
+ 
+ </classes>
+ 
+ </test>
+ 
+ <test name="IETest">
+ 
+ <parameter name="browser" value="ie" />
+ 
+ <classes>
+ 
+ <class name="automationFramework.MultiBrowser" />
+ 
+ </classes>
+ 
+ </test>
+ 
+</suite>
